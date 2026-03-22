@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Meal Planner — Sign In</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;900&family=Crimson+Pro:ital,wght@0,400;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="blue_card_style.css">
+<link rel="manifest" href="manifest.json">
+
+<style>
+  .auth-message {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: rgba(200,169,110,0.7);
+    text-align: center;
+    margin: 8px 0;
+    min-height: 18px;
+  }
+  .auth-divider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 16px 0;
+  }
+  .auth-divider span {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: rgba(200,169,110,0.5);
+    white-space: nowrap;
+  }
+  .auth-divider hr {
+    flex: 1;
+    border: none;
+    border-top: 1px solid rgba(200,169,110,0.2);
+    margin: 0;
+  }
+  .auth-input {
+    width: 100%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(200,169,110,0.3);
+    border-radius: 8px;
+    color: #f0e6d3;
+    font-family: 'Crimson Pro', serif;
+    font-size: 16px;
+    padding: 10px 14px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    outline: none;
+  }
+  .auth-input:focus {
+    border-color: rgba(200,169,110,0.7);
+  }
+  .auth-input::placeholder {
+    color: rgba(200,169,110,0.35);
+  }
+  .auth-toggle {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: rgba(200,169,110,0.6);
+    text-align: center;
+    margin-top: 12px;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  #emailForm { display: block; }
+</style>
+</head>
+
+<body>
+<div id="app">
+
+  <!-- ── PAGE HEADER ── -->
+  <div class="page-header">
+    <h1>Meal Planner</h1>
+    <hr>
+    <div class="gold-rule"></div>
+    <p class="desc">Sign in to access your personal meal planner, cookbook, and grocery list.</p>
+  </div>
+
+  <div class="section-wrapper">
+
+    <!-- ── SIGN IN CARD ── -->
+    <div class="nav-pill-wrap">
+      <div class="nav-pill-outer">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">🔐 Sign In</div>
+            <hr>
+            <div class="gold-rule"></div>
+          </div>
+          <div class="card-body">
+
+            <!-- Google Sign In -->
+            <button class="btn-blue" style="width:100%;" onclick="signInWithGoogle()">
+              Sign In with Google
+            </button>
+
+            <div class="auth-divider">
+              <hr><span>or use email</span><hr>
+            </div>
+
+            <!-- Email/Password Form -->
+            <div id="emailForm">
+              <input class="auth-input" type="email" id="emailInput" placeholder="Email address">
+              <input class="auth-input" type="password" id="passwordInput" placeholder="Password">
+              <div class="auth-message" id="authMessage"></div>
+              <button class="btn-gold" style="width:100%;margin-bottom:10px;" onclick="signInWithEmail()">
+                Sign In
+              </button>
+              <button class="btn-blue" style="width:100%;" onclick="registerWithEmail()">
+                Create Account
+              </button>
+            </div>
+
+            <div class="auth-toggle" onclick="toggleForgot()">Forgot password?</div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-ornament">◆ ◆ ◆</div>
+
+  </div>
+</div>
+
+<!-- Firebase -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+  import { getAuth, signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
+
+  // ── PASTE YOUR FIREBASE CONFIG HERE ──
+  const firebaseConfig = {
+    apiKey: "AIzaSyBod_5fi96oZ-Q7y9i8Iy-DL-uCkpMaACQ",
+    authDomain: "meal-planner-app-16afd.firebaseapp.com",
+    projectId: "meal-planner-app-16afd",
+    storageBucket: "meal-planner-app-16afd.firebasestorage.app",
+    messagingSenderId: "718879895385",
+    appId: "1:718879895385:web:fce2ebf3ea17014830e648"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const provider = new GoogleAuthProvider();
+
+  // If already signed in, go straight to app
+  onAuthStateChanged(auth, user => {
+    if (user) window.location.href = 'index.html';
+  });
+
+  // Google sign in
+  window.signInWithGoogle = function() {
+    showMessage('Signing in...');
+    signInWithPopup(auth, provider)
+      .then(() => window.location.href = 'index.html')
+      .catch(err => showMessage(err.message));
+  };
+
+  // Email sign in
+  window.signInWithEmail = function() {
+    const email = document.getElementById('emailInput').value.trim();
+    const password = document.getElementById('passwordInput').value;
+    if (!email || !password) { showMessage('Please enter email and password.'); return; }
+    showMessage('Signing in...');
+    signInWithEmailAndPassword(auth, email, password)
+      .then(() => window.location.href = 'index.html')
+      .catch(err => showMessage(err.message));
+  };
+
+  // Create account
+  window.registerWithEmail = function() {
+    const email = document.getElementById('emailInput').value.trim();
+    const password = document.getElementById('passwordInput').value;
+    if (!email || !password) { showMessage('Please enter email and password.'); return; }
+    if (password.length < 6) { showMessage('Password must be at least 6 characters.'); return; }
+    showMessage('Creating account...');
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(() => window.location.href = 'index.html')
+      .catch(err => showMessage(err.message));
+  };
+
+  // Forgot password
+  window.toggleForgot = function() {
+    const email = document.getElementById('emailInput').value.trim();
+    if (!email) { showMessage('Enter your email above first.'); return; }
+    sendPasswordResetEmail(auth, email)
+      .then(() => showMessage('Password reset email sent!'))
+      .catch(err => showMessage(err.message));
+  };
+
+  function showMessage(msg) {
+    document.getElementById('authMessage').textContent = msg;
+  }
+</script>
+
+</body>
+</html>
