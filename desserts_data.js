@@ -1,0 +1,1758 @@
+const desserts_data = [
+
+  {
+    "id": "cakes",
+    "icon": "🎂",
+    "name": "Cakes",
+    "desc": "Layer cakes, cheesecakes, pound cakes, sponge cakes, bundt cakes, and more.",
+    "recipes": [
+      {
+        "name": "Angel Food Cake",
+        "servings": "1 cake, ~12 slices",
+        "ingredients": [
+          "1 cup (120 g) cake flour",
+          "1½ cups (300 g) sugar, divided",
+          "12 large egg whites, room temperature",
+          "1½ tsp cream of tartar",
+          "¼ tsp salt",
+          "1½ tsp vanilla extract"
+        ],
+        "prep": "Preheat oven to 350°F (175°C). Sift flour with half the sugar three times and set aside. Beat egg whites with cream of tartar and salt to soft peaks. Gradually add remaining sugar and beat to stiff glossy peaks. Add vanilla. Fold in flour mixture in three additions. Pour into an ungreased tube pan. Bake 35–40 minutes. Invert pan immediately and cool completely before removing."
+      },
+      {
+        "name": "Blueberry Cheesecake",
+        "servings": "1 cake, ~8 slices",
+        "ingredients": [
+          "200 g (7 oz) graham cracker crumbs",
+          "100 g (3.5 oz) unsalted butter, melted",
+          "600 g (21 oz) cream cheese, softened",
+          "150 g (5.3 oz) granulated sugar",
+          "3 large eggs",
+          "1 tsp vanilla extract",
+          "200 ml (7 fl oz) sour cream",
+          "150 g (5.3 oz) fresh blueberries"
+        ],
+        "prep": "Preheat oven to 325°F (163°C). Combine crumbs and butter and press into a springform pan. Beat cream cheese and sugar until smooth. Add eggs one at a time. Mix in vanilla and sour cream. Fold in blueberries. Bake in a water bath 50–60 minutes until just set. Cool in oven with door cracked 1 hour. Refrigerate at least 4 hours before serving."
+      },
+      {
+        "name": "Bundt Cake",
+        "servings": "1 cake, ~12 slices",
+        "ingredients": [
+          "3 cups (360 g) all-purpose flour",
+          "1 tsp baking soda",
+          "½ tsp salt",
+          "1 cup (226 g) unsalted butter, softened",
+          "2 cups (400 g) granulated sugar",
+          "4 large eggs",
+          "1 cup (240 ml) buttermilk",
+          "2 tsp vanilla extract"
+        ],
+        "prep": "Preheat oven to 325°F (163°C). Cream butter and sugar until light and fluffy. Add eggs one at a time. Add vanilla. Alternately fold in flour mixture and buttermilk. Pour into a well-greased bundt pan and bake 55–65 minutes until a toothpick comes out clean. Cool in pan 15 minutes then invert onto a rack."
+      },
+      {
+        "name": "Carrot Cake",
+        "servings": "1 cake, ~12 slices",
+        "ingredients": [
+          "2 cups (250 g) all-purpose flour",
+          "2 cups (400 g) granulated sugar",
+          "2 tsp baking soda",
+          "2 tsp cinnamon",
+          "½ tsp nutmeg",
+          "½ tsp salt",
+          "1½ cups (360 ml) vegetable oil",
+          "4 large eggs",
+          "3 cups finely grated carrots",
+          "1 tsp vanilla extract"
+        ],
+        "prep": "Preheat oven to 350°F (175°C). Whisk dry ingredients. Add oil, eggs, and vanilla and beat well. Fold in grated carrots. Divide between two greased 9-inch round pans. Bake 30–35 minutes until a toothpick comes out clean. Cool completely before frosting with cream cheese icing."
+      },
+      {
+        "name": "Cheesecake",
+        "servings": "1 cake, ~12 slices",
+        "ingredients": [
+          "1½ cups (150 g) graham cracker crumbs",
+          "¼ cup (50 g) sugar",
+          "6 tbsp (85 g) butter, melted",
+          "900 g (32 oz) cream cheese, softened",
+          "1 cup (200 g) granulated sugar",
+          "3 large eggs",
+          "1 tsp vanilla extract",
+          "1 cup (240 ml) sour cream",
+          "Juice and zest of 1 lemon"
+        ],
+        "prep": "Preheat oven to 375°F (190°C). Press crumb mixture into a springform pan and bake 8 minutes. Beat cream cheese and sugar. Add eggs one at a time. Mix in sour cream, lemon, and vanilla. Bake in a water bath 15 minutes at 375°F, reduce to 225°F for 50 minutes. Leave in oven 1 hour. Refrigerate at least 4 hours."
+      },
+      {
+        "name": "Chocolate Cake",
+        "servings": "1 cake, ~12 slices",
+        "ingredients": [
+          "2 cups (240 g) all-purpose flour",
+          "2 cups (400 g) granulated sugar",
+          "¾ cup (65 g) cocoa powder",
+          "1½ tsp baking powder",
+          "1½ tsp baking soda",
+          "1 tsp salt",
+          "1 cup (240 ml) buttermilk",
+          "½ cup (120 ml) vegetable oil",
+          "2 large eggs",
+          "2 tsp vanilla extract",
+          "1 cup (240 ml) hot coffee"
+        ],
+        "prep": "Preheat oven to 350°F (175°C). Whisk all dry ingredients. Add buttermilk, oil, eggs, and vanilla and beat 2 minutes. Stir in hot coffee — batter will be thin. Pour into two greased 9-inch round pans. Bake 30–35 minutes. Cool before frosting."
+      },
+      {
+        "name": "Chocolate Layer Cake",
+        "servings": "1 cake, ~12 slices",
+        "ingredients": [
+          "2 cups (240 g) all-purpose flour",
+          "2 cups (400 g) sugar",
+          "¾ cup (65 g) cocoa powder",
+          "2 tsp baking powder",
+          "1½ tsp baking soda",
+          "1 tsp salt",
+          "1 cup (240 ml) milk",
+          "½ cup (120 ml) vegetable oil",
+          "2 large eggs",
+          "2 tsp vanilla extract",
+          "1 cup (240 ml) boiling water"
+        ],
+        "prep": "Preheat oven to 350°F (175°C). Combine dry ingredients. Add milk, oil, eggs, and vanilla and beat 2 minutes. Stir in boiling water. Pour into greased pans and bake 30–35 minutes. Cool and frost with chocolate buttercream or ganache between and on top of layers."
+      },
+      {
+        "name": "Coconut Cake",
+        "servings": "1 cake, ~12 slices",
+        "ingredients": [
+          "2½ cups (300 g) cake flour",
+          "2½ tsp baking powder",
+          "½ tsp salt",
+          "1 cup (226 g) unsalted butter, softened",
+          "2 cups (400 g) granulated sugar",
+          "5 large egg whites",
+          "1 tsp vanilla extract",
+          "1 tsp coconut extract",
+          "1 cup (240 ml) coconut milk",
+          "2 cups (170 g) sweetened shredded coconut for topping"
+        ],
+        "prep": "Preheat oven to 350°F (175°C). Cream butter and sugar. Beat in egg whites one at a time. Add vanilla and coconut extract. Alternately fold in flour mixture and coconut milk. Pour into greased round pans and bake 28–32 minutes. Cool and frost with coconut buttercream. Press shredded coconut onto the sides and top."
+      },
+      {
+        "name": "Lemon Pound Cake",
+        "servings": "1 loaf, ~10 slices",
+        "ingredients": [
+          "200 g (7 oz) unsalted butter, softened",
+          "200 g (7 oz) granulated sugar",
+          "4 large eggs",
+          "200 g (7 oz) all-purpose flour",
+          "1 tsp baking powder",
+          "Juice and zest of 2 lemons",
+          "1 tsp vanilla extract",
+          "Pinch of salt"
+        ],
+        "prep": "Preheat oven to 350°F (175°C). Cream butter and sugar until very light and fluffy. Add eggs one at a time. Add vanilla. Fold in flour, baking powder, and salt. Stir in lemon juice and zest. Bake in a greased loaf pan 50–60 minutes until a toothpick comes out clean."
+      },
+      {
+        "name": "Marble Cake",
+        "servings": "1 cake, ~12 slices",
+        "ingredients": [
+          "2 cups (240 g) all-purpose flour",
+          "1 cup (200 g) sugar",
+          "3 large eggs",
+          "1 cup (240 ml) milk",
+          "½ cup (115 g) butter, softened",
+          "2 tsp baking powder",
+          "1 tsp vanilla extract",
+          "½ tsp salt",
+          "3 tbsp (20 g) cocoa powder mixed with 2 tbsp hot water"
+        ],
+        "prep": "Preheat oven to 350°F (175°C). Cream butter and sugar. Add eggs one at a time. Alternately add flour and milk. Divide batter in half. Mix cocoa paste into one half. Spoon batters alternately into a greased pan. Swirl with a knife. Bake 35–40 minutes."
+      },
+      {
+        "name": "Pound Cake",
+        "servings": "1 cake, ~10 slices",
+        "ingredients": [
+          "1½ cups (340 g) unsalted butter, softened",
+          "1½ cups (300 g) granulated sugar",
+          "3 cups (360 g) all-purpose flour",
+          "6 large eggs",
+          "1 tsp vanilla extract",
+          "½ tsp salt",
+          "¼ cup (60 ml) sour cream"
+        ],
+        "prep": "Preheat oven to 325°F (163°C). Cream butter and sugar 6 minutes. Add eggs one at a time. Add vanilla and sour cream. Fold in flour and salt. Bake in a greased loaf pan 60–70 minutes. Cool completely before slicing."
+      },
+      {
+        "name": "Red Velvet Cake",
+        "servings": "1 cake, ~12 slices",
+        "ingredients": [
+          "2½ cups (300 g) all-purpose flour",
+          "2 cups (400 g) sugar",
+          "1 tbsp cocoa powder",
+          "1 tsp baking soda",
+          "1 tsp white vinegar",
+          "1 tsp salt",
+          "1¼ cups (300 ml) buttermilk",
+          "½ cup (120 ml) vegetable oil",
+          "2 large eggs",
+          "1 tbsp red food coloring",
+          "1 tsp vanilla extract"
+        ],
+        "prep": "Preheat oven to 350°F (175°C). Whisk dry ingredients. Combine buttermilk, oil, eggs, food coloring, vinegar, and vanilla. Mix wet into dry until smooth. Divide between two greased round pans. Bake 28–32 minutes. Cool and frost with cream cheese icing."
+      },
+      {
+        "name": "Stovetop Chocolate Cake",
+        "servings": "1 cake, ~8 slices",
+        "ingredients": [
+          "½ cup (115 g) butter",
+          "¼ cup (25 g) cocoa powder",
+          "¾ cup (150 g) sugar",
+          "½ cup (120 ml) milk",
+          "1 cup (120 g) all-purpose flour",
+          "1 tsp baking powder",
+          "Pinch of salt"
+        ],
+        "prep": "Melt butter in a heavy pan over low heat. Add cocoa, sugar, and milk and stir until smooth. Remove from heat. Add flour, baking powder, and salt and stir until smooth batter forms. Pour into a greased pan, cover with a lid, and cook on lowest heat 12–15 minutes until set. Cool before serving."
+      },
+      {
+        "name": "Strawberry Shortcake",
+        "servings": "1 cake, ~10 slices",
+        "ingredients": [
+          "1¾ cups (220 g) all-purpose flour",
+          "⅓ cup (65 g) sugar",
+          "2 tsp baking powder",
+          "¼ tsp salt",
+          "½ cup (115 g) cold butter, cubed",
+          "⅔ cup (160 ml) heavy cream",
+          "1 large egg",
+          "1 tsp vanilla extract",
+          "2 cups fresh strawberries, sliced and sweetened with 2 tbsp sugar",
+          "2 cups (480 ml) heavy cream, whipped"
+        ],
+        "prep": "Preheat oven to 400°F (200°C). Mix flour, sugar, baking powder, and salt. Cut in cold butter until crumbly. Stir in cream, egg, and vanilla. Pat into a greased 8-inch round pan. Bake 20–25 minutes until golden. Cool, slice in half, and layer with strawberries and whipped cream."
+      },
+      {
+        "name": "Vanilla Cake",
+        "servings": "1 cake, ~12 slices",
+        "ingredients": [
+          "2½ cups (300 g) cake flour",
+          "2 cups (400 g) sugar",
+          "1 tbsp baking powder",
+          "½ tsp salt",
+          "1 cup (240 ml) whole milk",
+          "½ cup (120 ml) vegetable oil",
+          "4 large eggs",
+          "2 tsp vanilla extract",
+          "½ cup (115 g) sour cream"
+        ],
+        "prep": "Preheat oven to 350°F (175°C). Whisk flour, sugar, baking powder, and salt. Add milk, oil, eggs, vanilla, and sour cream. Beat until smooth. Divide between two greased 9-inch round pans. Bake 28–32 minutes. Cool before frosting."
+      },
+      {
+        "name": "Vanilla Sponge Cake",
+        "servings": "1 cake, ~10 slices",
+        "ingredients": [
+          "1 cup (120 g) cake flour, sifted",
+          "1 cup (200 g) sugar, divided",
+          "4 large eggs, separated",
+          "¼ cup (60 ml) whole milk",
+          "¼ cup (60 g) unsalted butter, melted and cooled",
+          "1 tsp vanilla extract",
+          "¼ tsp cream of tartar"
+        ],
+        "prep": "Preheat oven to 350°F (175°C). Beat egg yolks with half the sugar until thick and pale. Fold in sifted flour in three additions. Add butter, milk, and vanilla. Beat egg whites with cream of tartar to soft peaks then add remaining sugar to stiff glossy peaks. Fold egg whites into batter in three additions. Pour into a greased 9-inch round pan and bake 25–30 minutes."
+      }
+    ]
+  },
+  {
+    "id": "chocolate",
+    "icon": "🍫",
+    "name": "Chocolate & Candy",
+    "desc": "Homemade chocolate bars, fondants, mousse, fudge, nougat, truffles, and candy creations from scratch.",
+    "recipes": [
+      {
+        "name": "3 Musketeers Style Bars",
+        "servings": "1 batch",
+        "ingredients": [
+          "1 cup (170 g) milk chocolate chips",
+          "1 cup (240 ml) whipped topping such as Cool Whip"
+        ],
+        "prep": "Melt chocolate chips and cool slightly. Fold in whipped topping until combined. Spread into a parchment lined dish and freeze 1 hour. Cut into bars and dip in melted chocolate. Let set on parchment."
+      },
+      {
+        "name": "Candy Bar Nougat",
+        "servings": "1 batch",
+        "ingredients": [
+          "1 cup (200 g) sugar",
+          "¼ cup (60 ml) water",
+          "¼ cup (80 g) corn syrup",
+          "2 large egg whites",
+          "1 tbsp sugar for meringue",
+          "½ tsp vanilla extract"
+        ],
+        "prep": "Cook sugar, water, and corn syrup to 260°F. Whip egg whites with 1 tbsp sugar to stiff peaks. Slowly pour hot syrup into whites while whipping. Add vanilla. Whip until thick and slightly cooled. Pour into a lined pan and let set."
+      },
+      {
+        "name": "Caramel Fudge",
+        "servings": "1 batch",
+        "ingredients": [
+          "1 can (14 oz) sweetened condensed milk",
+          "½ cup (115 g) unsalted butter",
+          "1 cup (220 g) packed brown sugar",
+          "1 cup (170 g) white chocolate chips",
+          "1 tsp vanilla extract"
+        ],
+        "prep": "Combine condensed milk, butter, and brown sugar in a heavy saucepan. Stir constantly until mixture reaches 235°F. Remove from heat, add white chocolate chips and vanilla, stir until smooth. Pour into a lined pan and chill until set. Cut into squares."
+      },
+      {
+        "name": "Caramel Shortbread Twix Bars",
+        "servings": "1 batch",
+        "ingredients": [
+          "Shortbread: 1 cup (226 g) butter softened, ½ cup (60 g) powdered sugar, 2 cups (240 g) all-purpose flour, pinch of salt",
+          "Caramel: 1 cup (220 g) brown sugar, ½ cup (115 g) butter, ½ cup (120 ml) heavy cream, 1 tsp vanilla",
+          "1½ cups (255 g) chocolate chips, melted"
+        ],
+        "prep": "Press shortbread into a lined pan and bake at 325°F for 18–20 minutes. Cool. Make caramel by cooking brown sugar, butter, and cream until thickened. Pour over shortbread. Cool. Pour melted chocolate over caramel layer. Chill until set then cut into bars."
+      },
+      {
+        "name": "Cherry Fondant",
+        "servings": "1 batch",
+        "ingredients": [
+          "1 can (14 oz) sweetened condensed milk",
+          "½ cup (115 g) butter, room temperature",
+          "3 cups (360 g) powdered sugar",
+          "Red food coloring",
+          "½ cup dried cherries, rehydrated and finely chopped"
+        ],
+        "prep": "Beat butter until smooth. Add condensed milk. Gradually add powdered sugar until a firm pliable dough forms. Add food coloring and cherries. Knead until evenly combined. Roll into balls or press into molds and refrigerate until firm."
+      },
+      {
+        "name": "Chocolate Covered Strawberries",
+        "servings": "1 batch",
+        "ingredients": [
+          "1 lb (450 g) fresh strawberries, rinsed and dried completely",
+          "2 cups (340 g) dark or milk chocolate chips",
+          "1 tbsp coconut oil or shortening",
+          "White chocolate for drizzle (optional)"
+        ],
+        "prep": "Melt chocolate chips with coconut oil in a double boiler or microwave in 30-second intervals, stirring until smooth. Dip each strawberry into chocolate holding by the stem. Allow excess to drip off. Place on parchment paper. Drizzle with white chocolate if desired. Refrigerate 15 minutes until set."
+      },
+      {
+        "name": "Chocolate Mousse",
+        "servings": "4 servings",
+        "ingredients": [
+          "6 oz (170 g) dark chocolate, finely chopped",
+          "3 tbsp (45 g) unsalted butter",
+          "3 large eggs, separated",
+          "3 tbsp (37 g) sugar",
+          "1 cup (240 ml) heavy cream",
+          "¼ tsp cream of tartar",
+          "1 tsp vanilla extract"
+        ],
+        "prep": "Melt chocolate and butter over a double boiler. Cool slightly. Whisk egg yolks and 2 tbsp sugar into chocolate. Beat egg whites with cream of tartar to soft peaks, add remaining sugar, beat to stiff peaks. Whip cream to soft peaks. Fold egg whites into chocolate then fold in whipped cream. Chill at least 2 hours."
+      },
+      {
+        "name": "Chocolate Truffles",
+        "servings": "~24 truffles",
+        "ingredients": [
+          "8 oz (225 g) dark chocolate, finely chopped",
+          "½ cup (120 ml) heavy cream",
+          "2 tbsp (30 g) unsalted butter",
+          "1 tsp vanilla extract",
+          "Cocoa powder, powdered sugar, or crushed nuts for rolling"
+        ],
+        "prep": "Heat cream to a simmer. Pour over chopped chocolate, let sit 2 minutes, then stir until smooth. Add butter and vanilla. Chill 2 hours until firm. Use a melon baller or spoon to scoop and roll into balls. Roll in cocoa powder or coatings of choice. Refrigerate until serving."
+      },
+      {
+        "name": "Fruit Gummies",
+        "servings": "1 batch",
+        "ingredients": [
+          "1 cup fresh fruit puree",
+          "2 tbsp honey or sugar",
+          "2½ tsp unflavored powdered gelatin",
+          "2 tbsp cold water"
+        ],
+        "prep": "Bloom gelatin in cold water 5 minutes. Warm fruit puree with honey — do not boil. Add bloomed gelatin and stir until fully dissolved. Pour into silicone molds and refrigerate at least 2 hours."
+      },
+      {
+        "name": "Fudge Bars",
+        "servings": "1 batch",
+        "ingredients": [
+          "1½ cups (300 g) sugar",
+          "1 cup (240 ml) water",
+          "½ cup (115 g) butter",
+          "400 g (14 oz) powdered milk",
+          "50 g (1.8 oz) cocoa powder",
+          "1 tsp vanilla extract"
+        ],
+        "prep": "Boil sugar and water until syrupy. Remove from heat and add butter. Mix powdered milk and cocoa in a large bowl. Pour hot syrup over dry mix. Add vanilla and stir well. Spread into a lined pan and chill until firm. Cut into bars."
+      },
+      {
+        "name": "Homemade Chocolate Bars — Dark",
+        "servings": "1 batch",
+        "ingredients": [
+          "4 tsp powdered sugar",
+          "6 tsp cocoa powder",
+          "4 tsp coconut oil, melted",
+          "½ tsp vanilla extract"
+        ],
+        "prep": "Mix all ingredients until completely smooth. Pour into a silicone mold and tap to remove air bubbles. Refrigerate until set, about 30 minutes."
+      },
+      {
+        "name": "Homemade Chocolate Bars — Milk",
+        "servings": "1 batch",
+        "ingredients": [
+          "4 tsp powdered sugar",
+          "2 tsp powdered milk",
+          "2 tsp cocoa powder",
+          "4 tsp coconut oil, melted",
+          "½ tsp vanilla extract"
+        ],
+        "prep": "Mix all ingredients until smooth. Pour into a silicone mold and refrigerate until set."
+      },
+      {
+        "name": "Homemade Chocolate Bars — White",
+        "servings": "1 batch",
+        "ingredients": [
+          "2 tsp powdered sugar",
+          "6 tsp powdered milk",
+          "5 tsp coconut oil, melted",
+          "½ tsp vanilla extract"
+        ],
+        "prep": "Mix all ingredients until smooth. Pour into a silicone mold and refrigerate until set."
+      },
+      {
+        "name": "Peanut Butter Fudge",
+        "servings": "1 batch",
+        "ingredients": [
+          "2 cups (400 g) granulated sugar",
+          "½ cup (120 ml) whole milk",
+          "1 cup (260 g) creamy peanut butter",
+          "1 tsp vanilla extract"
+        ],
+        "prep": "Combine sugar and milk in a heavy saucepan over medium heat. Bring to a boil stirring constantly. Cook to 235°F (soft ball stage). Remove from heat and immediately stir in peanut butter and vanilla. Stir vigorously until mixture thickens. Pour into a greased 8x8 pan. Cool completely before cutting into squares."
+      },
+      {
+        "name": "Vanilla Fondant",
+        "servings": "1 batch",
+        "ingredients": [
+          "2 cups (240 g) powdered sugar, sifted",
+          "2 tbsp (30 g) unsalted butter, softened",
+          "2–3 tbsp whole milk",
+          "1 tsp pure vanilla extract"
+        ],
+        "prep": "Beat butter until smooth. Add vanilla. Gradually add powdered sugar alternating with milk until a soft moldable consistency forms. Knead briefly until smooth. Shape as desired."
+      }
+    ]
+  },
+  {
+    "id": "cookies",
+    "icon": "🍪",
+    "name": "Cookies & Small Bites",
+    "desc": "Classic and popular cookies, cake rolls, and bite-sized sweets for snacking and sharing.",
+    "recipes": [
+      {
+        "name": "Brownie Cookies",
+        "servings": "~24 cookies",
+        "ingredients": [
+          "1 cup (170 g) dark chocolate chips",
+          "¼ cup (60 g) unsalted butter",
+          "¾ cup (150 g) granulated sugar",
+          "2 large eggs",
+          "1 tsp vanilla extract",
+          "⅔ cup (80 g) all-purpose flour",
+          "2 tbsp cocoa powder",
+          "½ tsp baking powder",
+          "¼ tsp salt"
+        ],
+        "prep": "Preheat oven to 350°F (175°C). Melt chocolate and butter together. Cool slightly. Whisk sugar, eggs, and vanilla into chocolate mixture. Fold in flour, cocoa, baking powder, and salt. Drop by tablespoon onto lined baking sheets — dough will be soft. Bake 10–12 minutes until crinkly on top. Cool on pan 5 minutes."
+      },
+      {
+        "name": "Chocolate Chip Cookies",
+        "servings": "~24 cookies",
+        "ingredients": [
+          "2¼ cups (280 g) all-purpose flour",
+          "1 tsp baking soda",
+          "1 tsp salt",
+          "1 cup (226 g) unsalted butter, softened",
+          "¾ cup (150 g) granulated sugar",
+          "¾ cup (165 g) packed brown sugar",
+          "2 large eggs",
+          "2 tsp vanilla extract",
+          "2 cups (340 g) chocolate chips"
+        ],
+        "prep": "Preheat oven to 375°F (190°C). Whisk flour, baking soda, and salt. Beat butter and both sugars until light and fluffy. Add eggs one at a time then vanilla. Gradually mix in flour. Fold in chocolate chips. Drop rounded tablespoons onto lined baking sheets. Bake 9–11 minutes until edges are golden."
+      },
+      {
+        "name": "Cinnamon Rolls",
+        "servings": "~12 rolls",
+        "ingredients": [
+          "3 cups (360 g) all-purpose flour",
+          "1 packet (7 g) instant yeast",
+          "1 cup (240 ml) whole milk, warmed to 98°F",
+          "¼ cup (50 g) sugar",
+          "1 tsp salt",
+          "¼ cup (60 g) butter, softened",
+          "1 large egg",
+          "Filling: ½ cup (115 g) soft butter, ¾ cup (165 g) brown sugar, 2 tbsp cinnamon",
+          "Icing: 2 cups (240 g) powdered sugar, 3–4 tbsp milk, 1 tsp vanilla"
+        ],
+        "prep": "Mix warm milk, yeast, and 1 tsp sugar. Let sit 10 minutes. Add egg and butter. Mix in flour and salt. Knead 8 minutes. Rise 1 hour. Roll out, spread filling, roll into log, cut into 12 pieces. Rise 30 minutes. Bake at 350°F 20–25 minutes. Drizzle with icing."
+      },
+      {
+        "name": "Creme Filled Cake Rolls",
+        "servings": "~10 slices",
+        "ingredients": [
+          "3 large eggs",
+          "½ cup (100 g) sugar",
+          "2 tbsp cocoa powder",
+          "2 tbsp milk",
+          "½ cup (60 g) all-purpose flour",
+          "1 tsp baking powder",
+          "Pinch of salt",
+          "1 cup (240 ml) heavy cream, whipped with 2 tbsp powdered sugar and 1 tsp vanilla"
+        ],
+        "prep": "Preheat oven to 350°F (175°C). Beat eggs and sugar. Mix cocoa with milk and add. Fold in flour, baking powder, and salt. Spread onto a lined baking sheet. Bake 10–12 minutes. Roll warm cake in parchment. Cool completely. Unroll, spread whipped cream, re-roll. Slice into rounds."
+      },
+      {
+        "name": "Gingerbread Cookies",
+        "servings": "~36 cookies",
+        "ingredients": [
+          "3 cups (360 g) all-purpose flour",
+          "1½ tsp baking powder",
+          "¾ tsp baking soda",
+          "¼ tsp salt",
+          "1 tbsp ground ginger",
+          "1¾ tsp ground cinnamon",
+          "¼ tsp ground cloves",
+          "6 tbsp (85 g) unsalted butter, softened",
+          "¾ cup (165 g) packed dark brown sugar",
+          "1 large egg",
+          "½ cup (170 g) molasses",
+          "2 tsp vanilla extract"
+        ],
+        "prep": "Whisk flour, baking powder, baking soda, salt, and spices. Beat butter and brown sugar until fluffy. Add egg, molasses, and vanilla. Fold in flour mixture until combined. Divide dough in half, flatten, wrap, and refrigerate at least 2 hours. Preheat oven to 350°F (175°C). Roll dough to ¼-inch thick and cut into shapes. Bake 8–10 minutes until edges are set. Cool before decorating."
+      },
+      {
+        "name": "Lemon Cookies",
+        "servings": "~24 cookies",
+        "ingredients": [
+          "2¼ cups (280 g) all-purpose flour",
+          "1 tsp baking soda",
+          "½ tsp salt",
+          "1 cup (226 g) unsalted butter, softened",
+          "1 cup (200 g) granulated sugar",
+          "1 large egg",
+          "Zest of 2 lemons",
+          "3 tbsp fresh lemon juice",
+          "1 tsp vanilla extract",
+          "Powdered sugar for rolling"
+        ],
+        "prep": "Preheat oven to 350°F (175°C). Cream butter and sugar. Beat in egg, lemon zest, lemon juice, and vanilla. Mix in flour, baking soda, and salt. Chill 30 minutes. Roll into balls and coat in powdered sugar. Bake on lined sheets 10–12 minutes until edges are just set and tops are crinkled."
+      },
+      {
+        "name": "Mirror Glaze",
+        "servings": "1 batch",
+        "ingredients": [
+          "1 cup (200 g) sugar",
+          "½ cup (120 ml) water",
+          "½ cup (160 g) glucose syrup or corn syrup",
+          "4 gelatin sheets, bloomed",
+          "½ cup (85 g) white chocolate chips",
+          "Food coloring as desired"
+        ],
+        "prep": "Boil sugar and water until dissolved. Add glucose. Remove from heat. Add squeezed gelatin and stir until dissolved. Pour over white chocolate and stir until melted. Add food coloring. Cool to 88–95°F before pouring over a frozen dessert."
+      },
+      {
+        "name": "Oatmeal Raisin Cookies",
+        "servings": "~24 cookies",
+        "ingredients": [
+          "1¾ cups (210 g) all-purpose flour",
+          "1 tsp baking soda",
+          "1 tsp cinnamon",
+          "½ tsp salt",
+          "1 cup (226 g) unsalted butter, softened",
+          "¾ cup (150 g) granulated sugar",
+          "¾ cup (165 g) packed brown sugar",
+          "2 large eggs",
+          "1 tsp vanilla extract",
+          "3 cups (270 g) old-fashioned rolled oats",
+          "1½ cups (225 g) raisins"
+        ],
+        "prep": "Preheat oven to 350°F (175°C). Whisk flour, baking soda, cinnamon, and salt. Cream butter and both sugars until fluffy. Add eggs and vanilla. Fold in flour mixture. Stir in oats and raisins. Drop rounded tablespoons onto lined sheets. Bake 10–12 minutes until edges are golden and centers look slightly underdone. Cool on pan 5 minutes."
+      },
+      {
+        "name": "Peanut Butter Blossoms",
+        "servings": "~36 cookies",
+        "ingredients": [
+          "1¾ cups (210 g) all-purpose flour",
+          "1 tsp baking soda",
+          "½ tsp salt",
+          "½ cup (115 g) unsalted butter, softened",
+          "½ cup (130 g) creamy peanut butter",
+          "½ cup (100 g) granulated sugar",
+          "½ cup (110 g) packed brown sugar",
+          "1 large egg",
+          "2 tbsp milk",
+          "1 tsp vanilla extract",
+          "Granulated sugar for rolling",
+          "36 chocolate kiss candies, unwrapped"
+        ],
+        "prep": "Preheat oven to 375°F (190°C). Whisk flour, baking soda, and salt. Beat butter, peanut butter, and both sugars. Add egg, milk, and vanilla. Mix in flour. Roll into 1-inch balls and roll in granulated sugar. Bake on lined sheets 8–10 minutes until just set. Immediately press a chocolate kiss into the center of each warm cookie."
+      },
+      {
+        "name": "Peanut Butter Cookies",
+        "servings": "~24 cookies",
+        "ingredients": [
+          "1¼ cups (150 g) all-purpose flour",
+          "¾ tsp baking soda",
+          "½ tsp baking powder",
+          "¼ tsp salt",
+          "½ cup (115 g) unsalted butter, softened",
+          "1 cup (260 g) creamy peanut butter",
+          "¾ cup (150 g) granulated sugar",
+          "½ cup (110 g) packed brown sugar",
+          "1 large egg",
+          "1 tsp vanilla extract"
+        ],
+        "prep": "Preheat oven to 375°F (190°C). Whisk flour, baking soda, baking powder, and salt. Cream butter, peanut butter, and both sugars. Add egg and vanilla. Mix in flour. Roll into balls, place on lined sheets 2 inches apart, flatten with a fork in a crosshatch pattern. Bake 10 minutes until edges are lightly golden."
+      },
+      {
+        "name": "Shortbread Cookies",
+        "servings": "~24 cookies",
+        "ingredients": [
+          "2 cups (240 g) all-purpose flour",
+          "¼ cup (30 g) cornstarch",
+          "¼ tsp salt",
+          "1 cup (226 g) unsalted butter, softened",
+          "½ cup (60 g) powdered sugar",
+          "1 tsp vanilla extract"
+        ],
+        "prep": "Preheat oven to 325°F (163°C). Whisk flour, cornstarch, and salt. Beat butter and powdered sugar until very light and fluffy, about 5 minutes. Add vanilla. Fold in flour mixture until just combined. Roll out to ¼-inch thick and cut into shapes, or roll into a log and slice. Bake on lined sheets 14–16 minutes until just barely golden at edges. Cool completely before serving."
+      },
+      {
+        "name": "Snickerdoodles",
+        "servings": "~24 cookies",
+        "ingredients": [
+          "2¾ cups (330 g) all-purpose flour",
+          "2 tsp cream of tartar",
+          "1 tsp baking soda",
+          "½ tsp salt",
+          "1 cup (226 g) unsalted butter, softened",
+          "1½ cups (300 g) granulated sugar",
+          "2 large eggs",
+          "1 tsp vanilla extract",
+          "Coating: 3 tbsp sugar mixed with 1½ tsp cinnamon"
+        ],
+        "prep": "Preheat oven to 375°F (190°C). Whisk flour, cream of tartar, baking soda, and salt. Cream butter and sugar until light and fluffy. Add eggs and vanilla. Mix in flour. Roll dough into balls and roll in cinnamon sugar coating. Place 2 inches apart on lined sheets. Bake 10–12 minutes until crinkled and edges are just set. Centers should look slightly underdone."
+      },
+      {
+        "name": "Soft Butter Cookies",
+        "servings": "~24 cookies",
+        "ingredients": [
+          "1 cup (226 g) unsalted butter, softened",
+          "¾ cup (150 g) granulated sugar",
+          "2 large egg yolks",
+          "1 tsp vanilla extract",
+          "2¼ cups (280 g) all-purpose flour",
+          "¼ tsp salt",
+          "1–2 tbsp whole milk if needed"
+        ],
+        "prep": "Preheat oven to 350°F (175°C). Cream butter and sugar until light and fluffy. Beat in egg yolks and vanilla. Add flour and salt. Add milk if dough is too stiff. Roll into balls or pipe into swirls. Chill 20 minutes. Bake 10–12 minutes until edges are just lightly golden."
+      },
+      {
+        "name": "Sugar Cookies",
+        "servings": "~24 cookies",
+        "ingredients": [
+          "2¼ cups (280 g) all-purpose flour",
+          "1 tsp baking powder",
+          "¼ tsp salt",
+          "1 cup (226 g) unsalted butter, softened",
+          "1 cup (200 g) granulated sugar",
+          "1 large egg",
+          "2 tsp vanilla extract"
+        ],
+        "prep": "Cream butter and sugar. Beat in egg and vanilla. Mix in flour, baking powder, and salt. Refrigerate 1 hour. Preheat oven to 375°F (190°C). Roll out and cut into shapes. Bake 8–10 minutes until edges are just set. Cool before decorating."
+      },
+      {
+        "name": "Sweetened Condensed Milk",
+        "servings": "1 batch",
+        "ingredients": [
+          "2 cups (480 ml) whole milk",
+          "⅔ cup (130 g) granulated sugar"
+        ],
+        "prep": "Combine milk and sugar in a heavy saucepan over medium heat. Stir until sugar fully dissolves. Reduce to a gentle simmer. Cook uncovered, stirring occasionally, until reduced by half and thick and creamy — about 35–45 minutes. Cool and store in a jar."
+      },
+      {
+        "name": "White Chocolate Macadamia Nut Cookies",
+        "servings": "~24 cookies",
+        "ingredients": [
+          "2¼ cups (280 g) all-purpose flour",
+          "1 tsp baking soda",
+          "½ tsp salt",
+          "1 cup (226 g) unsalted butter, softened",
+          "¾ cup (150 g) granulated sugar",
+          "¾ cup (165 g) packed brown sugar",
+          "2 large eggs",
+          "2 tsp vanilla extract",
+          "2 cups (340 g) white chocolate chips",
+          "1 cup (130 g) macadamia nuts, roughly chopped"
+        ],
+        "prep": "Preheat oven to 375°F (190°C). Whisk flour, baking soda, and salt. Cream butter and both sugars. Add eggs one at a time and vanilla. Mix in flour. Fold in white chocolate chips and macadamia nuts. Drop by rounded tablespoons onto lined sheets. Bake 9–11 minutes until golden. Cool on pan 5 minutes."
+      }
+    ]
+  },
+  {
+    "id": "creams",
+    "icon": "🍦",
+    "name": "Creams & Frostings",
+    "desc": "Pastry creams, chantilly, buttercreams, whipped creams, and specialty creams for filling and frosting.",
+    "recipes": [
+      {
+        "name": "Banana Creme",
+        "servings": "1 batch",
+        "ingredients": [
+          "2 ripe bananas, mashed",
+          "2 tbsp butter, melted",
+          "½ cup (120 ml) whole milk",
+          "2 tbsp cornstarch",
+          "2 egg yolks",
+          "¼ cup (50 g) sugar",
+          "1 tsp vanilla",
+          "1 cup (240 ml) heavy cream, whipped"
+        ],
+        "prep": "Mash bananas and combine with melted butter. Add milk, cornstarch, egg yolks, sugar, and vanilla. Cook over medium heat stirring constantly until smooth and thick. Refrigerate at least 1 hour. Whisk smooth. Fold in whipped cream."
+      },
+      {
+        "name": "Banana Custard Cream",
+        "servings": "1 batch",
+        "ingredients": [
+          "2 ripe bananas, diced",
+          "2 tbsp sugar",
+          "1 tbsp butter",
+          "1 cup (240 ml) whole milk",
+          "2 tbsp cornstarch",
+          "2 egg yolks",
+          "¼ cup (50 g) sugar",
+          "1 tsp vanilla",
+          "1 cup (240 ml) heavy cream"
+        ],
+        "prep": "Cook bananas with sugar and butter until soft. Blend with milk. Return to pot. Whisk in cornstarch, egg yolks, sugar, and vanilla. Cook until thickened. Chill completely. Whip heavy cream to stiff peaks and fold into cold banana custard."
+      },
+      {
+        "name": "Caramel Creme",
+        "servings": "1 batch",
+        "ingredients": [
+          "1 cup (200 g) granulated sugar",
+          "¼ cup (60 ml) water",
+          "1 cup (240 ml) heavy cream, warm",
+          "3 tbsp (45 g) unsalted butter",
+          "¼ tsp salt"
+        ],
+        "prep": "Cook sugar and water over medium-high heat without stirring until deep amber. Remove from heat and carefully pour in warm cream — it will bubble. Stir smooth. Add butter and salt. Stir until combined. Cool before using."
+      },
+      {
+        "name": "Chantilly Cream",
+        "servings": "1 batch",
+        "ingredients": [
+          "2 cups (480 ml) heavy whipping cream, cold",
+          "3 tbsp (22 g) powdered sugar",
+          "1 tsp vanilla extract",
+          "Optional: 200 g mascarpone cheese for stability"
+        ],
+        "prep": "Beat mascarpone with powdered sugar if using then gradually add cold cream and whip to stiff peaks. Without mascarpone whip cold cream with powdered sugar and vanilla to stiff peaks. Use immediately or refrigerate up to 24 hours."
+      },
+      {
+        "name": "Chiboust Cream",
+        "servings": "1 batch",
+        "ingredients": [
+          "250 ml whole milk",
+          "65 g sugar",
+          "40 g egg yolks (about 2)",
+          "25 g cornstarch",
+          "3 gelatin sheets (2 g each)",
+          "3 egg whites",
+          "10 g sugar for meringue",
+          "100 g sugar and 40 ml water for Italian meringue syrup"
+        ],
+        "prep": "Make pastry cream with milk, sugar, yolks, and cornstarch. Bloom gelatin and add to hot custard. Cool. Make Italian meringue by boiling water and 100g sugar to 244°F and pouring slowly over whipped egg whites. Fold warm meringue into custard in two to three additions."
+      },
+      {
+        "name": "Chocolate Chantilly Cream",
+        "servings": "1 batch",
+        "ingredients": [
+          "2 cups (480 ml) heavy cream",
+          "4 oz (115 g) dark chocolate, finely chopped",
+          "3 tbsp (22 g) powdered sugar"
+        ],
+        "prep": "Heat cream until just simmering. Pour over chopped chocolate and stir until melted. Add powdered sugar. Cool then refrigerate overnight. The next day whip to a light fluffy cream that holds soft peaks."
+      },
+      {
+        "name": "Chocolate Ganache",
+        "servings": "1 batch",
+        "ingredients": [
+          "1 cup (170 g) dark or semi-sweet chocolate chips",
+          "½ cup (120 ml) heavy cream",
+          "1 tbsp unsalted butter"
+        ],
+        "prep": "Heat cream until just simmering. Pour over chocolate chips and let sit 2 minutes. Add butter and stir from the center outward until perfectly smooth and glossy. For a glaze use immediately. For frosting cool to room temperature and whip until fluffy. For truffles refrigerate until firm."
+      },
+      {
+        "name": "Chocolate Pastry Cream",
+        "servings": "1 batch",
+        "ingredients": [
+          "2 cups (480 ml) whole milk",
+          "1 tsp vanilla extract",
+          "4 egg yolks",
+          "¾ cup (150 g) sugar",
+          "3 tbsp cornstarch",
+          "3 tbsp cocoa powder",
+          "½ cup (85 g) dark chocolate chips",
+          "2 tbsp unsalted butter"
+        ],
+        "prep": "Heat milk and vanilla until steaming. Whisk egg yolks, sugar, cornstarch, and cocoa until smooth. Slowly pour hot milk into egg mixture while whisking. Return to pot and cook on medium heat whisking constantly until thick and bubbling. Remove from heat, add chocolate chips and butter. Press plastic wrap on surface and chill."
+      },
+      {
+        "name": "Cream Cheese Frosting",
+        "servings": "1 batch",
+        "ingredients": [
+          "8 oz (225 g) cream cheese, softened",
+          "½ cup (115 g) unsalted butter, softened",
+          "3–4 cups (360–480 g) powdered sugar, sifted",
+          "1 tsp vanilla extract",
+          "Pinch of salt"
+        ],
+        "prep": "Beat cream cheese and butter together until smooth and fluffy, about 3 minutes. Add vanilla and salt. Gradually add powdered sugar one cup at a time beating well after each. Adjust amount to desired sweetness and consistency. Use immediately or refrigerate and re-whip before using."
+      },
+      {
+        "name": "Diplomat Cream",
+        "servings": "1 batch",
+        "ingredients": [
+          "250 ml whole milk",
+          "65 g sugar",
+          "40 g egg yolks (about 2)",
+          "25 g cornstarch",
+          "1 tsp vanilla",
+          "2 gelatin sheets (2 g each)",
+          "200 ml heavy cream, whipped to stiff peaks"
+        ],
+        "prep": "Make pastry cream with milk, sugar, yolks, cornstarch, and vanilla. Bloom gelatin and add to hot custard. Chill completely. Whisk smooth. Fold in whipped cream in two additions."
+      },
+      {
+        "name": "Easy Cake Icing",
+        "servings": "1 batch",
+        "ingredients": [
+          "2 cups (240 g) powdered sugar, sifted",
+          "3–4 tbsp whole milk",
+          "½ tsp vanilla extract"
+        ],
+        "prep": "Whisk powdered sugar, vanilla, and milk until smooth and pourable. Adjust with more milk for thinner or more sugar for thicker icing. Drizzle or spread over completely cooled cake."
+      },
+      {
+        "name": "Egg White Whipped Cream",
+        "servings": "1 batch",
+        "ingredients": [
+          "4 large egg whites",
+          "½ cup (100 g) granulated sugar",
+          "Pinch of cream of tartar",
+          "1 tsp lemon juice",
+          "1 tsp vanilla extract"
+        ],
+        "prep": "Combine egg whites, sugar, cream of tartar, and lemon juice in a heat proof bowl. Set over simmering water and whisk until warm and sugar is dissolved, about 3–4 minutes. Whip on high until glossy stiff peaks form. Add vanilla and whip briefly."
+      },
+      {
+        "name": "Ermine Buttercream",
+        "servings": "1 batch",
+        "ingredients": [
+          "1 cup (240 ml) whole milk",
+          "¼ cup (30 g) all-purpose flour",
+          "1 cup (200 g) granulated sugar",
+          "1 cup (226 g) unsalted butter, softened"
+        ],
+        "prep": "Whisk milk, flour, and sugar in a saucepan over medium heat until very thick like pudding. Press plastic wrap on surface and cool completely. Beat softened butter until very light and fluffy, about 5 minutes. Add the cooled milk mixture one spoonful at a time beating well after each until light and stiffened."
+      },
+      {
+        "name": "Ice Cream",
+        "servings": "1 batch",
+        "ingredients": [
+          "2 cups (480 ml) heavy whipping cream, cold",
+          "1 can (14 oz) sweetened condensed milk",
+          "2 tsp vanilla extract",
+          "Pinch of salt"
+        ],
+        "prep": "Whip cold heavy cream until stiff peaks form. Gently fold in condensed milk, vanilla, and salt until combined. Pour into a freezer-safe container. Press plastic wrap on surface to prevent ice crystals. Freeze at least 6 hours before serving."
+      },
+      {
+        "name": "Vanilla Cream",
+        "servings": "1 batch",
+        "ingredients": [
+          "½ cup (100 g) sugar",
+          "3 tbsp cornstarch",
+          "1 tsp vanilla",
+          "3 egg yolks",
+          "1½ cups (360 ml) whole milk, warmed",
+          "2 tbsp unsalted butter"
+        ],
+        "prep": "Whisk sugar, cornstarch, and egg yolks. Gradually whisk in warm milk. Cook over medium heat stirring constantly until thick and bubbling. One more minute. Remove from heat, add butter and vanilla. Press plastic wrap on surface and chill."
+      },
+      {
+        "name": "Vanilla Pastry Cream",
+        "servings": "1 batch",
+        "ingredients": [
+          "2 cups (480 ml) whole milk",
+          "½ cup (100 g) granulated sugar",
+          "3 tbsp cornstarch",
+          "4 large egg yolks",
+          "1 tsp pure vanilla extract",
+          "2 tbsp unsalted butter"
+        ],
+        "prep": "Heat milk to just below boiling. Whisk yolks, sugar, and cornstarch until pale. Slowly pour hot milk into yolk mixture while whisking to temper. Return to saucepan and cook over medium heat whisking vigorously until thick and bubbling. One more minute. Remove from heat, add butter and vanilla. Press plastic wrap directly on surface and refrigerate."
+      },
+      {
+        "name": "Whipped Cream From Milk",
+        "servings": "1 batch",
+        "ingredients": [
+          "2 cups (480 ml) whole milk",
+          "2 tbsp powdered sugar",
+          "1 tsp vanilla extract",
+          "2 tbsp cornstarch"
+        ],
+        "prep": "Heat milk until cream rises to surface. Skim cream off and set aside. Mix cornstarch with ½ cup cold milk and add to warm remaining milk. Stir until thickened. Add vanilla and powdered sugar to skimmed cream. Combine both, cool in refrigerator. Whip with a hand mixer until stiff peaks form."
+      }
+    ]
+  },
+  {
+    "id": "donuts",
+    "icon": "🍩",
+    "name": "Donuts & Pastries",
+    "desc": "Glazed donuts, filled doughnuts, churros, cream puffs, muffins, scones, loaves, and more.",
+    "recipes": [
+      {
+        "name": "Banana Bread",
+        "servings": "1 loaf, ~10 slices",
+        "ingredients": [
+          "3 very ripe bananas, mashed (about 1½ cups)",
+          "⅓ cup (75 g) unsalted butter, melted",
+          "¾ cup (150 g) granulated sugar",
+          "1 large egg, beaten",
+          "1 tsp vanilla extract",
+          "1 tsp baking soda",
+          "Pinch of salt",
+          "1½ cups (180 g) all-purpose flour"
+        ],
+        "prep": "Preheat oven to 350°F (175°C). Mash bananas. Stir in melted butter. Mix in sugar, beaten egg, and vanilla. Add baking soda and salt. Fold in flour until just combined. Pour into a greased 9x5 loaf pan. Bake 55–65 minutes until deep golden and a toothpick comes out clean. Cool in pan 10 minutes."
+      },
+      {
+        "name": "Blueberry Muffins",
+        "servings": "~12 muffins",
+        "ingredients": [
+          "2 cups (240 g) all-purpose flour",
+          "¾ cup (150 g) granulated sugar",
+          "2½ tsp baking powder",
+          "½ tsp salt",
+          "2 large eggs",
+          "1 cup (240 ml) whole milk",
+          "½ cup (115 g) unsalted butter, melted",
+          "1 tsp vanilla extract",
+          "1½ cups (215 g) fresh or frozen blueberries"
+        ],
+        "prep": "Preheat oven to 400°F (200°C). Whisk flour, sugar, baking powder, and salt. Whisk eggs, milk, butter, and vanilla. Combine wet and dry until just combined. Fold in blueberries. Fill lined muffin cups ¾ full. Bake 18–22 minutes until golden."
+      },
+      {
+        "name": "Cherry Custard Cream Filled Doughnuts",
+        "servings": "~12 doughnuts",
+        "ingredients": [
+          "3 cups (360 g) bread flour",
+          "¼ cup (50 g) sugar",
+          "1 tsp salt",
+          "1 packet (7 g) instant yeast",
+          "2 large egg yolks",
+          "1 tsp vanilla",
+          "¾ cup (180 ml) warm whole milk (98°F)",
+          "¼ cup (60 g) unsalted butter, softened",
+          "Oil for frying",
+          "Cherry Custard: 1 cup milk, ½ cup fresh cherry puree, 2 egg yolks, 3 tbsp sugar, 2 tbsp cornstarch, 2 tbsp butter"
+        ],
+        "prep": "Mix flour, sugar, salt, and yeast. Add warm milk, egg yolks, and vanilla. Knead 5 minutes. Add butter and knead until smooth, about 8 more minutes. Rise until doubled, about 1 hour. Divide into 12 balls. Flatten slightly and let rest 20 minutes. Fry in 350°F oil until golden on each side. For cherry custard: whisk egg yolks, sugar, and cornstarch. Temper with warm cherry milk mixture. Cook until thick. Add butter. Chill. Pipe into cooled doughnuts."
+      },
+      {
+        "name": "Chocolate Chip Scones",
+        "servings": "~8 scones",
+        "ingredients": [
+          "2 cups (240 g) all-purpose flour",
+          "⅓ cup (65 g) sugar",
+          "1 tbsp baking powder",
+          "½ tsp salt",
+          "½ cup (115 g) cold unsalted butter, cubed",
+          "¾ cup (180 ml) cold heavy cream",
+          "1 large egg",
+          "1 tsp vanilla extract",
+          "¾ cup (130 g) chocolate chips"
+        ],
+        "prep": "Preheat oven to 400°F (200°C). Whisk flour, sugar, baking powder, and salt. Cut in cold butter until crumbly. Whisk cream, egg, and vanilla and pour into flour mix. Add chocolate chips and stir until just combined. Pat into a 1-inch thick circle and cut into 8 wedges. Bake on a lined sheet 18–22 minutes until golden."
+      },
+      {
+        "name": "Chocolate Frosted Donuts",
+        "servings": "~12 donuts",
+        "ingredients": [
+          "Classic glazed donut dough (see above)",
+          "Oil for frying",
+          "Chocolate Frosting: 1 cup (170 g) chocolate chips, ¼ cup (60 ml) heavy cream, 1 tbsp butter"
+        ],
+        "prep": "Make and fry donuts as in the classic glazed donut recipe. For chocolate frosting heat cream until simmering, pour over chocolate chips, add butter, and stir until smooth. Dip tops of cooled donuts in warm frosting and let set on a rack."
+      },
+      {
+        "name": "Churros",
+        "servings": "~20 churros",
+        "ingredients": [
+          "1 cup (240 ml) water",
+          "1 tbsp sugar",
+          "½ tsp salt",
+          "⅓ cup (75 g) unsalted butter",
+          "1 cup (120 g) all-purpose flour",
+          "3 large eggs",
+          "1 tsp vanilla extract",
+          "Oil for frying at 350°F",
+          "Coating: ½ cup sugar mixed with 1½ tsp cinnamon"
+        ],
+        "prep": "Bring water, sugar, salt, and butter to a boil. Add flour all at once and stir vigorously until dough pulls from sides. Transfer to bowl and cool 5 minutes. Beat in eggs one at a time until smooth. Add vanilla. Pipe onto parchment strips with a star tip. Submerge paper into 350°F oil — dough releases. Fry 2–3 minutes per side until golden. Roll immediately in cinnamon sugar."
+      },
+      {
+        "name": "Cinnamon Sugar Donuts",
+        "servings": "~12 donuts",
+        "ingredients": [
+          "Classic glazed donut dough (see above)",
+          "Oil for frying",
+          "Coating: ½ cup (100 g) granulated sugar, 1½ tsp ground cinnamon, 3 tbsp melted butter"
+        ],
+        "prep": "Make and fry donuts as in the classic glazed donut recipe. While still warm, brush with melted butter and roll in cinnamon sugar mixture until fully coated. Best served warm."
+      },
+      {
+        "name": "Classic Glazed Donuts",
+        "servings": "~12 donuts",
+        "ingredients": [
+          "3 cups (360 g) all-purpose flour",
+          "¼ cup (50 g) sugar",
+          "1 packet (7 g) instant yeast",
+          "½ tsp salt",
+          "¾ cup (180 ml) warm milk (100°F)",
+          "2 large eggs",
+          "⅓ cup (75 g) unsalted butter, softened",
+          "Oil for frying",
+          "Glaze: 2 cups (240 g) powdered sugar, ¼ cup (60 ml) warm milk, 1 tsp vanilla"
+        ],
+        "prep": "Mix flour, sugar, yeast, and salt. Add warm milk, eggs, and butter and knead until smooth and elastic, about 8 minutes. Rise until doubled, about 1 hour. Roll out to ½-inch and cut donut shapes. Rest 30 minutes. Fry in 350°F oil about 1 minute per side. Dip warm donuts in glaze."
+      },
+      {
+        "name": "Cream Puffs",
+        "servings": "~20 puffs",
+        "ingredients": [
+          "½ cup (120 ml) water",
+          "½ cup (120 ml) whole milk",
+          "½ cup (115 g) unsalted butter",
+          "1 tsp sugar",
+          "½ tsp salt",
+          "1 cup (120 g) all-purpose flour",
+          "4 large eggs",
+          "Filling: 2 cups (480 ml) heavy cream, 2 tbsp powdered sugar, 1 tsp vanilla"
+        ],
+        "prep": "Preheat oven to 425°F (220°C). Bring water, milk, butter, sugar, and salt to a boil. Add flour all at once and stir vigorously until dough forms. Transfer to bowl and cool 5 minutes. Beat in eggs one at a time. Pipe 1.5-inch mounds onto a lined sheet. Bake 15 minutes, reduce to 375°F and bake 10 more minutes. Cool. Whip cream with sugar and vanilla. Cut tops off and fill."
+      },
+      {
+        "name": "Cream-Filled Donuts",
+        "servings": "~12 donuts",
+        "ingredients": [
+          "Classic glazed donut dough (see above)",
+          "Oil for frying",
+          "Filling: 2 cups vanilla pastry cream (see Creams section)"
+        ],
+        "prep": "Make and fry donut balls without holes as in classic glazed donut recipe. Cool completely. Using a piping bag with a long round tip, insert into the side of each donut and pipe pastry cream inside until donut feels slightly heavier. Dust with powdered sugar."
+      },
+      {
+        "name": "Fried Apple Pie",
+        "servings": "~8 pies",
+        "ingredients": [
+          "Dough: 2 cups (240 g) all-purpose flour, ½ tsp salt, ⅔ cup (150 g) cold butter, 4–5 tbsp ice water",
+          "Filling: 3 medium apples peeled and diced, ¾ cup (165 g) brown sugar, ¾ cup (180 ml) water, 1 tsp lemon juice, 2 tbsp butter, 1 tsp cinnamon, ¼ tsp nutmeg, 1 tsp vanilla, 2 tbsp cornstarch mixed with 2 tbsp cold water",
+          "Egg wash, Oil for frying",
+          "Glaze: 1½ cups powdered sugar, 3 tbsp milk"
+        ],
+        "prep": "Make dough by cutting cold butter into flour and salt until crumbly. Add ice water and knead just until dough holds. Chill 30 minutes. Cook apples until softened. Make butterscotch sauce with brown sugar, water, butter, lemon juice, and spices. Add apples and cornstarch slurry and cook until thick. Cool. Roll dough, cut into circles, fill, seal with fork. Fry in 350°F oil until golden. Drizzle with glaze."
+      },
+      {
+        "name": "Lemon Loaf",
+        "servings": "1 loaf, ~10 slices",
+        "ingredients": [
+          "1½ cups (180 g) all-purpose flour",
+          "1 tsp baking powder",
+          "¼ tsp salt",
+          "½ cup (115 g) unsalted butter, softened",
+          "1 cup (200 g) granulated sugar",
+          "2 large eggs",
+          "½ cup (120 ml) sour cream",
+          "Zest of 2 lemons",
+          "2 tbsp fresh lemon juice",
+          "Glaze: 1 cup powdered sugar, 2–3 tbsp fresh lemon juice"
+        ],
+        "prep": "Preheat oven to 350°F (175°C). Cream butter and sugar. Add eggs one at a time. Mix in sour cream, lemon zest, and lemon juice. Fold in flour, baking powder, and salt. Bake in a greased loaf pan 50–55 minutes. Pour lemon glaze over top while warm."
+      },
+      {
+        "name": "Mini Apple Pies",
+        "servings": "~12 mini pies",
+        "ingredients": [
+          "Rectangular dough sheets or egg roll wrappers",
+          "2 apples diced",
+          "2 tbsp butter",
+          "¼ cup (55 g) brown sugar",
+          "1 tsp cinnamon",
+          "Cornstarch slurry for sealing",
+          "Oil for frying",
+          "Glaze: 1 cup powdered sugar, 2 tbsp milk"
+        ],
+        "prep": "Cook diced apples with butter, brown sugar, and cinnamon until soft. Cool. Place filling on dough sheet, brush edges with cornstarch slurry, fold over and press to seal. Fry in 350°F oil until golden. Dip in glaze, dust with powdered sugar, drizzle with chocolate syrup."
+      },
+      {
+        "name": "Mini Cruller Donuts",
+        "servings": "~20 crullers",
+        "ingredients": [
+          "1 cup (240 ml) water",
+          "1 tbsp sugar",
+          "½ tsp salt",
+          "⅓ cup (75 g) unsalted butter",
+          "1 cup (120 g) all-purpose flour",
+          "3 large eggs",
+          "1 tsp vanilla",
+          "Oil for frying at 350°F",
+          "Glaze: 1½ cups powdered sugar, 3 tbsp milk"
+        ],
+        "prep": "Make choux dough by boiling water, sugar, salt, and butter, adding flour, stirring until dough forms, cooling 5 minutes, then beating in eggs and vanilla. Pipe into rings onto parchment squares. Fry at 350°F dropping paper and dough together — dough releases. Fry 2–3 minutes per side. Dip in glaze."
+      },
+      {
+        "name": "Pumpkin Bread",
+        "servings": "1 loaf, ~10 slices",
+        "ingredients": [
+          "1¾ cups (210 g) all-purpose flour",
+          "1 tsp baking soda",
+          "½ tsp salt",
+          "1 tsp cinnamon",
+          "½ tsp nutmeg",
+          "¼ tsp ginger",
+          "¼ tsp cloves",
+          "½ cup (115 g) unsalted butter, melted",
+          "1 cup (220 g) brown sugar",
+          "2 large eggs",
+          "1 cup (240 g) pumpkin puree",
+          "1 tsp vanilla extract"
+        ],
+        "prep": "Preheat oven to 350°F (175°C). Whisk flour, baking soda, salt, and spices. In a separate bowl whisk butter, brown sugar, eggs, pumpkin, and vanilla. Fold dry into wet until just combined. Bake in a greased 9x5 loaf pan 60–70 minutes until a toothpick comes out clean."
+      },
+      {
+        "name": "Raspberry Danish",
+        "servings": "~8 pastries",
+        "ingredients": [
+          "1 sheet (250 g) puff pastry, thawed",
+          "½ cup (160 g) raspberry jam",
+          "½ cup (115 g) cream cheese, softened",
+          "2 tbsp powdered sugar",
+          "1 tsp vanilla",
+          "1 egg beaten with 1 tbsp milk"
+        ],
+        "prep": "Preheat oven to 400°F (200°C). Beat cream cheese with powdered sugar and vanilla. Cut pastry into 8 squares. Place cream cheese in center, top with jam. Fold in corners slightly and brush with egg wash. Bake 15–20 minutes until puffed and deep golden."
+      },
+      {
+        "name": "Strawberry Muffins",
+        "servings": "~12 muffins",
+        "ingredients": [
+          "2 cups (240 g) all-purpose flour",
+          "¾ cup (150 g) granulated sugar",
+          "2 tsp baking powder",
+          "½ tsp salt",
+          "2 large eggs",
+          "1 cup (240 ml) whole milk",
+          "½ cup (115 g) unsalted butter, melted",
+          "1 tsp vanilla extract",
+          "1½ cups (215 g) fresh strawberries, chopped"
+        ],
+        "prep": "Preheat oven to 400°F (200°C). Whisk flour, sugar, baking powder, and salt. Whisk eggs, milk, butter, and vanilla. Combine wet and dry until just combined. Fold in strawberries. Fill lined muffin cups ¾ full. Bake 20–24 minutes until golden."
+      },
+      {
+        "name": "Vanilla Cream Filled Donuts",
+        "servings": "~12 donuts",
+        "ingredients": [
+          "3 cups (360 g) bread flour",
+          "¼ cup (50 g) sugar",
+          "1 tsp salt",
+          "Zest of 1 lemon",
+          "1 packet (7 g) instant yeast",
+          "¾ cup (180 ml) warm water (98°F)",
+          "2 large eggs",
+          "¼ cup (60 g) unsalted butter, softened",
+          "Oil for frying",
+          "Vanilla Cream: ½ cup sugar, 3 tbsp cornstarch, 1 tsp vanilla, 3 egg yolks, 1½ cups warm milk, 2 tbsp butter"
+        ],
+        "prep": "Mix flour, sugar, salt, lemon zest, and yeast. Add warm water and eggs. Knead 5 minutes. Add butter and knead until smooth about 8 more minutes. Rise 2 hours then refrigerate overnight. Roll into balls and fry in 350°F oil until golden. For vanilla cream whisk sugar, cornstarch, and egg yolks. Add warm milk and cook until thick. Add butter and vanilla. Chill. Pipe cream into cooled donuts."
+      }
+    ]
+  },
+  {
+    "id": "jellies",
+    "icon": "🍯",
+    "name": "Jellies & Jams",
+    "desc": "Strawberry jam, grape jelly, peach preserves, orange marmalade, and a variety of classic fruit spreads and conserves.",
+    "recipes": [
+      {
+        "name": "Apple Jelly",
+        "servings": "About 4 half-pint jars",
+        "ingredients": [
+          "4 cups (960 ml) fresh apple juice or cider",
+          "1 packet (1.75 oz) powdered pectin",
+          "3 cups (600 g) sugar",
+          "1 tsp cinnamon"
+        ],
+        "prep": "Combine apple juice and pectin in a pot. Bring to a full rolling boil. Add sugar and cinnamon all at once and return to a hard boil. Boil exactly 1 minute, stirring constantly. Skim foam. Pour into sterilized jars, seal, and process in a water bath 10 minutes."
+      },
+      {
+        "name": "Blackberry Jam",
+        "servings": "About 4 half-pint jars",
+        "ingredients": [
+          "4 cups (580 g) fresh or frozen blackberries",
+          "3 cups (600 g) sugar",
+          "2 tbsp lemon juice"
+        ],
+        "prep": "Mash blackberries in a large heavy pot. Add sugar and lemon juice. Bring to a boil over medium-high heat, stirring constantly. Cook until mixture thickens and reaches 220°F, about 20 minutes. Pour into sterilized jars, seal, and process in a water bath 10 minutes."
+      },
+      {
+        "name": "Blueberry Jam",
+        "servings": "About 4 half-pint jars",
+        "ingredients": [
+          "4 cups (580 g) fresh blueberries",
+          "2½ cups (500 g) sugar",
+          "3 tbsp lemon juice",
+          "1 packet (1.75 oz) powdered pectin"
+        ],
+        "prep": "Crush blueberries in a large pot. Stir in lemon juice and pectin. Bring to a full rolling boil. Add all sugar at once and return to a hard boil. Boil 1 minute, stirring constantly. Skim foam. Pour into sterilized jars, seal, and process in a water bath 10 minutes."
+      },
+      {
+        "name": "Cherry Preserves",
+        "servings": "About 4 half-pint jars",
+        "ingredients": [
+          "4 cups (600 g) pitted sweet cherries",
+          "2½ cups (500 g) sugar",
+          "3 tbsp lemon juice"
+        ],
+        "prep": "Combine cherries, sugar, and lemon juice in a heavy pot. Bring to a boil over medium heat, stirring often. Simmer until thickened and syrupy, about 20 minutes. Skim foam. Pour into sterilized jars, seal, and process in a water bath 10 minutes."
+      },
+      {
+        "name": "Classic Strawberry Jam",
+        "servings": "About 4 half-pint jars",
+        "ingredients": [
+          "4 cups (600 g) crushed fresh strawberries",
+          "3 cups (600 g) sugar",
+          "2 tbsp lemon juice"
+        ],
+        "prep": "Combine crushed strawberries, sugar, and lemon juice in a large heavy-bottomed pot. Bring to a boil over medium-high heat, stirring constantly. Continue boiling and stirring until mixture thickens and reaches 220°F on a candy thermometer, about 20 minutes. Skim foam. Pour into sterilized jars, seal, and process in a water bath 10 minutes."
+      },
+      {
+        "name": "Grape Jelly",
+        "servings": "About 4 half-pint jars",
+        "ingredients": [
+          "4 cups (960 ml) pure grape juice",
+          "1 packet (1.75 oz) powdered pectin",
+          "3 cups (600 g) sugar"
+        ],
+        "prep": "Combine grape juice and pectin in a large pot. Bring to a full rolling boil over high heat, stirring constantly. Add all sugar at once and return to a hard boil. Boil exactly 1 minute, stirring constantly. Skim foam. Pour into sterilized jars and seal. Process in a water bath 10 minutes."
+      },
+      {
+        "name": "Orange Marmalade",
+        "servings": "About 5 half-pint jars",
+        "ingredients": [
+          "4 large navel oranges",
+          "1 lemon",
+          "4 cups (800 g) sugar",
+          "3 cups (720 ml) water"
+        ],
+        "prep": "Slice oranges and lemon paper thin, removing seeds. Combine fruit and water in a large pot. Simmer uncovered 30 minutes until rind is soft. Add sugar and stir to dissolve. Boil rapidly until mixture reaches 220°F on a candy thermometer, about 25 minutes. Skim foam. Pour into sterilized jars, seal, and process in a water bath 10 minutes."
+      },
+      {
+        "name": "Peach Preserves",
+        "servings": "About 4 half-pint jars",
+        "ingredients": [
+          "4 cups (680 g) peeled diced fresh peaches",
+          "2 cups (400 g) sugar",
+          "2 tbsp lemon juice",
+          "1 tsp vanilla extract"
+        ],
+        "prep": "Combine peaches, sugar, and lemon juice in a heavy pot. Let sit 30 minutes until juices release. Bring to a boil over medium heat, stirring often. Simmer until thick and glossy, about 30 minutes. Stir in vanilla. Pour into sterilized jars, seal, and process in a water bath 10 minutes."
+      },
+      {
+        "name": "Plum Jam",
+        "servings": "About 4 half-pint jars",
+        "ingredients": [
+          "4 cups (680 g) pitted diced plums",
+          "3 cups (600 g) sugar",
+          "2 tbsp lemon juice",
+          "1 tsp cinnamon"
+        ],
+        "prep": "Combine plums, sugar, lemon juice, and cinnamon in a heavy pot. Bring to a boil over medium-high heat, stirring often. Cook until thickened and reaching 220°F, about 25 minutes. Skim foam. Pour into sterilized jars, seal, and process in a water bath 10 minutes."
+      },
+      {
+        "name": "Raspberry Jam",
+        "servings": "About 4 half-pint jars",
+        "ingredients": [
+          "4 cups (500 g) fresh raspberries",
+          "3 cups (600 g) sugar",
+          "2 tbsp lemon juice"
+        ],
+        "prep": "Combine raspberries, sugar, and lemon juice in a heavy pot. Bring to a boil over medium-high heat, stirring constantly. Cook until thickened and reaching 220°F, about 15 minutes. Pour into sterilized jars, seal, and process in a water bath 10 minutes."
+      }
+    ]
+  },
+  {
+    "id": "pies",
+    "icon": "🥧",
+    "name": "Pies & Tarts",
+    "desc": "Apple pie, pumpkin pie, pecan pie, lemon meringue, custard tarts, and a variety of classic crusts and fillings.",
+    "recipes": [
+      {
+        "name": "Apple Pie",
+        "servings": "1 pie, ~8 slices",
+        "ingredients": [
+          "Crust: 2½ cups (300 g) all-purpose flour, 1 tsp salt, 1 tbsp sugar, 1 cup (226 g) cold unsalted butter cubed, 6–8 tbsp ice water",
+          "Filling: 6–7 medium apples peeled and sliced, ¾ cup (165 g) sugar, 2 tbsp all-purpose flour, 1 tsp cinnamon, ¼ tsp nutmeg, 1 tbsp lemon juice, 2 tbsp butter",
+          "Egg wash: 1 egg beaten with 1 tbsp milk"
+        ],
+        "prep": "Make crust by cutting cold butter into flour, salt, and sugar until crumbly. Add ice water until dough just holds. Divide in half, flatten, wrap, and chill 1 hour. Preheat oven to 425°F (220°C). Toss apple filling ingredients together. Roll out bottom crust and place in pie dish. Fill with apples and dot with butter. Roll out top crust, place over filling, and crimp edges. Cut vents and brush with egg wash. Bake 20 minutes, reduce to 375°F and bake 35–40 more minutes until golden."
+      },
+      {
+        "name": "Banana Cream Pie",
+        "servings": "1 pie, ~8 slices",
+        "ingredients": [
+          "1 prepared graham cracker or cookie crust",
+          "3 ripe bananas, sliced",
+          "Filling: 2½ cups whole milk, ½ cup sugar, 3 tbsp cornstarch, ¼ tsp salt, 3 egg yolks, 2 tbsp butter, 1 tsp vanilla extract",
+          "2 cups (480 ml) heavy cream whipped with 2 tbsp sugar"
+        ],
+        "prep": "Make filling: whisk sugar, cornstarch, salt, and egg yolks with cold milk in a saucepan. Cook over medium heat stirring constantly until thick and bubbling. One more minute. Add butter and vanilla. Cool with plastic wrap pressed on surface. Layer banana slices in prepared crust. Pour filling over bananas. Refrigerate at least 4 hours. Top with whipped cream before serving."
+      },
+      {
+        "name": "Cherry Pie",
+        "servings": "1 pie, ~8 slices",
+        "ingredients": [
+          "Double pie crust (see Apple Pie recipe)",
+          "Filling: 4 cups (600 g) fresh or canned tart cherries pitted, ¾ cup (150 g) sugar, 3 tbsp cornstarch, 1 tbsp lemon juice, ½ tsp almond extract",
+          "Egg wash"
+        ],
+        "prep": "Preheat oven to 425°F (220°C). Make filling by combining cherries, sugar, cornstarch, lemon juice, and almond extract. Line pie dish with bottom crust. Fill with cherry mixture. Cover with top crust or lattice and crimp edges. Brush with egg wash. Bake 20 minutes, reduce to 375°F and bake 35–40 more minutes until juices are bubbling and crust is golden."
+      },
+      {
+        "name": "Classic Pie Crust",
+        "servings": "1 9-inch pie",
+        "ingredients": [
+          "2 ½ cups all-purpose flour",
+          "1 tsp salt",
+          "1 cup unsalted butter, cold and cubed",
+          "6–8 tbsp ice water"
+        ],
+        "prep": "Combine flour and salt. Cut in butter until mixture resembles coarse crumbs. Gradually add ice water until dough forms. Divide in half, shape into disks, wrap, and chill 30 minutes. Roll out and fit into pie pan."
+      },
+      {
+        "name": "Classic Tart Crust",
+        "servings": "1 9-inch tart",
+        "ingredients": [
+          "1 ¼ cups all-purpose flour",
+          "½ cup unsalted butter, cold and cubed",
+          "¼ cup powdered sugar",
+          "1 large egg yolk",
+          "Pinch of salt"
+        ],
+        "prep": "Mix flour, sugar, and salt. Cut in butter until coarse crumbs form. Add egg yolk and knead briefly until dough forms. Wrap and chill 30 minutes. Roll out and fit into tart pan."
+      },
+      {
+        "name": "Cookie Crust For Pie",
+        "servings": "1 crust",
+        "ingredients": [
+          "½ cup (115 g) unsalted butter, softened",
+          "½ cup (60 g) powdered sugar",
+          "1 large egg yolk, raw",
+          "1 large egg yolk, hard boiled and pushed through a sieve",
+          "1 tsp vanilla extract",
+          "1 cup (120 g) cake flour",
+          "¼ tsp salt"
+        ],
+        "prep": "Beat butter and powdered sugar until creamy. Add both egg yolks and vanilla and mix well. Add flour and salt and mix until dough comes together. Flatten into a disk and refrigerate at least 30 minutes before rolling and pressing into tart molds or a pie dish."
+      },
+      {
+        "name": "Easy Lemon Cream Pie",
+        "servings": "1 pie, ~8 slices",
+        "ingredients": [
+          "3 large eggs",
+          "1 can (14 oz) sweetened condensed milk",
+          "½ cup (120 ml) fresh lemon juice",
+          "Zest of 2 lemons",
+          "Prepared graham cracker crust",
+          "Whipped cream for topping"
+        ],
+        "prep": "Preheat oven to 325°F (163°C). Whisk eggs, condensed milk, lemon juice, and zest until smooth. Pour into prepared crust. Bake 15–20 minutes until just set. Cool then refrigerate at least 2 hours. Top with whipped cream."
+      },
+      {
+        "name": "Lemon Meringue Pie",
+        "servings": "1 pie, ~8 slices",
+        "ingredients": [
+          "Prepared cookie or graham cracker crust",
+          "Filling: 1¼ cups sugar, ¼ cup cornstarch, zest of 2 lemons, 1¼ cups water, ¾ cup fresh lemon juice, 5 egg yolks, 4 tbsp butter, 1 tsp vanilla",
+          "Meringue: 5 large egg whites, ¼ tsp cream of tartar, ½ cup granulated sugar"
+        ],
+        "prep": "Make filling: whisk sugar, cornstarch, lemon zest, water, and lemon juice in a pot and cook until thick. Temper into egg yolks. Return to pot and cook 2 more minutes. Add butter and vanilla. Pour into baked crust. Make meringue: beat egg whites with cream of tartar then gradually add sugar to stiff glossy peaks. Spread over hot filling touching edges. Bake at 350°F until peaks are golden."
+      },
+      {
+        "name": "Lemon Tart",
+        "servings": "1 tart, ~8 slices",
+        "ingredients": [
+          "1 cup (240 ml) cold whole milk",
+          "½ cup (100 g) granulated sugar",
+          "3 tbsp cornstarch",
+          "½ cup (120 ml) fresh lemon juice",
+          "2 tbsp unsalted butter",
+          "Prepared tart crust, baked"
+        ],
+        "prep": "Whisk cold milk, sugar, and cornstarch in a saucepan until smooth. Cook over medium heat whisking constantly until it reaches a full rolling boil. Boil 45–60 seconds. Remove from heat and immediately whisk in lemon juice. Add butter and stir until smooth and glossy. Pour into baked tart shell. Cool then refrigerate until fully set."
+      },
+      {
+        "name": "Lime Pie",
+        "servings": "1 pie, ~8 slices",
+        "ingredients": [
+          "Crust: 1½ cups (150 g) graham cracker crumbs, 2 tbsp sugar, 6 tbsp (85 g) butter melted",
+          "Filling: 1 can (14 oz) sweetened condensed milk, 3 large egg yolks, ½ cup (120 ml) fresh lime juice, zest of 2 limes",
+          "Whipped cream for topping"
+        ],
+        "prep": "Press crumb mixture into pie dish. Bake at 350°F for 8 minutes. Cool. Beat condensed milk, egg yolks, lime juice, and zest. Pour over crust and bake 15 minutes. Chill at least 3 hours. Serve with whipped cream."
+      },
+      {
+        "name": "Milk Tart",
+        "servings": "1 tart, ~8 slices",
+        "ingredients": [
+          "1 can (14 oz) sweetened condensed milk",
+          "1 cup (240 ml) whole milk",
+          "3 tbsp cornstarch",
+          "1 tsp vanilla extract",
+          "Pinch of cinnamon for topping",
+          "Prepared tart shell"
+        ],
+        "prep": "Whisk condensed milk, milk, and cornstarch in a saucepan over medium heat stirring constantly until thickened and smooth. Add vanilla. Pour into prepared tart shell, dust with cinnamon, and refrigerate at least 2 hours until set."
+      },
+      {
+        "name": "No Bake Lemon Tart",
+        "servings": "1 tart, ~8 slices",
+        "ingredients": [
+          "1 cup (240 ml) whole milk",
+          "½ cup (100 g) sugar",
+          "1 can (14 oz) sweetened condensed milk",
+          "3 tbsp cornstarch",
+          "2 tbsp fresh lemon juice",
+          "2 tbsp unsalted butter",
+          "1 tsp vanilla extract",
+          "Prepared tart shell"
+        ],
+        "prep": "Combine milk, sugar, condensed milk, and cornstarch in a saucepan. Cook over medium heat stirring constantly until thickened. Remove from heat. Stir in lemon juice, butter, and vanilla. Pour into tart shell and refrigerate until fully set."
+      },
+      {
+        "name": "Pecan Pie",
+        "servings": "1 pie, ~8 slices",
+        "ingredients": [
+          "1 unbaked 9-inch pie crust",
+          "3 large eggs",
+          "1 cup (320 g) light corn syrup",
+          "1 cup (220 g) packed brown sugar",
+          "2 tbsp unsalted butter, melted",
+          "1 tsp vanilla extract",
+          "¼ tsp salt",
+          "2 cups (225 g) pecan halves"
+        ],
+        "prep": "Preheat oven to 350°F (175°C). Whisk eggs, corn syrup, brown sugar, melted butter, vanilla, and salt until well combined. Stir in pecans. Pour into unbaked pie crust. Bake 50–60 minutes until center is just set — it will jiggle slightly. Cool completely before slicing."
+      },
+      {
+        "name": "Pumpkin Pie",
+        "servings": "1 pie, ~8 slices",
+        "ingredients": [
+          "1 unbaked 9-inch pie crust",
+          "1 can (15 oz) pumpkin puree",
+          "¾ cup (165 g) brown sugar",
+          "1 tsp cinnamon",
+          "½ tsp ginger",
+          "¼ tsp cloves",
+          "¼ tsp nutmeg",
+          "½ tsp salt",
+          "3 large eggs",
+          "1¼ cups (300 ml) evaporated milk"
+        ],
+        "prep": "Preheat oven to 425°F (220°C). Whisk pumpkin, brown sugar, spices, and salt. Beat in eggs. Gradually stir in evaporated milk. Pour into unbaked crust. Bake 15 minutes at 425°F, reduce to 350°F and bake 40–50 more minutes until a knife inserted near the center comes out clean. Cool completely before serving."
+      },
+      {
+        "name": "Shortbread Crust",
+        "servings": "1 9-inch tart",
+        "ingredients": [
+          "1 cup all-purpose flour",
+          "½ cup unsalted butter, softened",
+          "¼ cup powdered sugar",
+          "Pinch of salt"
+        ],
+        "prep": "Cream butter and sugar until smooth. Mix in flour and salt until dough forms. Press into tart pan evenly. Chill 15 minutes, then bake at 350°F for 15–18 minutes until lightly golden."
+      },
+      {
+        "name": "Strawberry Tart",
+        "servings": "1 tart, ~8 slices",
+        "ingredients": [
+          "1 baked tart shell",
+          "Filling: 2 cups vanilla pastry cream (see Creams section)",
+          "2 cups (300 g) fresh strawberries, hulled and sliced",
+          "2 tbsp apricot jam mixed with 1 tbsp warm water for glaze"
+        ],
+        "prep": "Fill cooled baked tart shell with a smooth layer of vanilla pastry cream. Arrange sliced strawberries on top in a decorative pattern. Brush with warmed apricot glaze to give a beautiful sheen and prevent drying. Refrigerate until serving."
+      },
+      {
+        "name": "Sweet Potato Pie",
+        "servings": "1 pie, ~8 slices",
+        "ingredients": [
+          "1 unbaked 9-inch pie crust",
+          "2 cups (480 g) cooked and mashed sweet potato",
+          "¾ cup (165 g) brown sugar",
+          "2 large eggs",
+          "½ cup (120 ml) evaporated milk",
+          "¼ cup (60 g) unsalted butter, softened",
+          "1 tsp vanilla extract",
+          "1 tsp cinnamon",
+          "½ tsp nutmeg",
+          "¼ tsp ginger",
+          "¼ tsp salt"
+        ],
+        "prep": "Preheat oven to 350°F (175°C). Beat sweet potato and butter together until smooth. Beat in sugar, eggs, evaporated milk, vanilla, and spices until well combined. Pour into unbaked pie crust. Bake 55–60 minutes until a knife inserted in center comes out clean. Cool before serving."
+      }
+    ]
+  },
+  {
+    "id": "puddings",
+    "icon": "🍮",
+    "name": "Puddings & Custards",
+    "desc": "Banana pudding, crème brûlée, flan, bread pudding, rice pudding, panna cotta, and creamy classics.",
+    "recipes": [
+      {
+        "name": "Banana Pudding",
+        "servings": "6 servings",
+        "ingredients": [
+          "1 packet (3.4 oz) instant vanilla pudding mix",
+          "2 cups (480 ml) cold whole milk",
+          "1 can (14 oz) sweetened condensed milk",
+          "2 ripe bananas, sliced",
+          "2 cups (480 ml) heavy cream whipped with 2 tbsp powdered sugar",
+          "Vanilla wafer cookies"
+        ],
+        "prep": "Whisk pudding mix and cold milk for 2 minutes until thickened. Fold in condensed milk. Layer vanilla wafers, banana slices, and pudding in a dish. Top with whipped cream and more wafers. Chill at least 2 hours before serving."
+      },
+      {
+        "name": "Banana Pudding (Layered)",
+        "servings": "8 servings",
+        "ingredients": [
+          "1 cup (200 g) granulated sugar",
+          "½ cup (60 g) all-purpose flour",
+          "¼ tsp salt",
+          "4 large egg yolks",
+          "2½ cups (600 ml) whole milk",
+          "2 tsp vanilla extract",
+          "1 cup (240 ml) heavy cream, whipped to stiff peaks",
+          "Vanilla wafers",
+          "3–4 ripe bananas, sliced"
+        ],
+        "prep": "Whisk sugar, flour, salt, egg yolks, and milk in a heavy saucepan. Cook over medium heat stirring constantly until thick and bubbling. One more minute. Add vanilla. Cool slightly. Fold in whipped cream for a lighter texture. Layer vanilla wafers, banana slices, and pudding in a trifle dish. Chill at least 4 hours."
+      },
+      {
+        "name": "Bread Pudding",
+        "servings": "8 servings",
+        "ingredients": [
+          "6 cups (about 300 g) cubed day-old bread such as brioche or French bread",
+          "3 large eggs",
+          "2 cups (480 ml) whole milk",
+          "1 cup (240 ml) heavy cream",
+          "¾ cup (165 g) granulated sugar",
+          "2 tsp vanilla extract",
+          "1 tsp cinnamon",
+          "¼ tsp nutmeg",
+          "¼ cup (60 g) butter, melted",
+          "½ cup (75 g) raisins or chocolate chips (optional)"
+        ],
+        "prep": "Preheat oven to 350°F (175°C). Arrange bread cubes in a greased 9x13 baking dish. Whisk eggs, milk, cream, sugar, vanilla, cinnamon, and nutmeg together. Pour over bread. Drizzle with melted butter. Add raisins if using. Let soak 20 minutes. Bake 40–45 minutes until golden on top and a knife inserted in center comes out clean."
+      },
+      {
+        "name": "Butterscotch Pudding",
+        "servings": "4 servings",
+        "ingredients": [
+          "1 cup (220 g) packed dark brown sugar",
+          "3 tbsp cornstarch",
+          "¼ tsp salt",
+          "2½ cups (600 ml) whole milk",
+          "3 large egg yolks",
+          "3 tbsp unsalted butter",
+          "2 tsp vanilla extract"
+        ],
+        "prep": "Whisk brown sugar, cornstarch, salt, and cold milk until smooth. Cook over medium heat, stirring constantly, until thickened and bubbling. Whisk a small amount of hot mixture into egg yolks to temper. Return to pot and cook 2 more minutes. Remove from heat. Add butter and vanilla and stir until butter melts. Pour into serving dishes and press plastic wrap directly on surface. Refrigerate until set, about 2 hours."
+      },
+      {
+        "name": "Chocolate Eclairs",
+        "servings": "~12 eclairs",
+        "ingredients": [
+          "Choux: ½ cup milk, ½ cup water, ½ cup butter, 1 tsp sugar, ½ tsp salt, 1 cup flour, 4 large eggs",
+          "Pastry Cream: 2 cups milk, 4 egg yolks, ½ cup sugar, 3 tbsp cornstarch, ¼ tsp salt, 2 tbsp butter, 1 tsp vanilla",
+          "Ganache: 1 cup chocolate chips, ½ cup hot heavy cream"
+        ],
+        "prep": "Preheat oven to 400°F (200°C). Make choux: boil milk, water, butter, sugar, and salt. Add flour and stir until dough forms. Cool 5 minutes. Beat in eggs one at a time. Pipe 4-inch strips onto lined sheet. Bake 20–25 minutes until golden. Cool. Make pastry cream: whisk yolks, sugar, cornstarch, and salt. Temper with hot milk. Cook until thick. Add butter and vanilla. Chill. Poke holes in shells and inject pastry cream. Make ganache by pouring hot cream over chocolate and stirring smooth. Dip tops in ganache. Chill."
+      },
+      {
+        "name": "Chocolate Pudding",
+        "servings": "4 servings",
+        "ingredients": [
+          "½ cup (100 g) granulated sugar",
+          "3 tbsp (20 g) cocoa powder",
+          "3 tbsp cornstarch",
+          "¼ tsp salt",
+          "2½ cups (600 ml) whole milk",
+          "1 tbsp unsalted butter",
+          "1 tsp vanilla extract"
+        ],
+        "prep": "Whisk sugar, cocoa, cornstarch, salt, and cold milk in a saucepan until smooth. Cook over medium heat whisking constantly until thick and bubbling. Boil gently 1 minute. Add butter and vanilla. Pour into dishes and press plastic wrap on surface. Chill at least 2 hours."
+      },
+      {
+        "name": "Crème Brûlée",
+        "servings": "4 servings",
+        "ingredients": [
+          "2 cups (480 ml) heavy cream",
+          "5 large egg yolks",
+          "½ cup (100 g) granulated sugar",
+          "1 tsp vanilla extract",
+          "4 tsp granulated sugar for topping"
+        ],
+        "prep": "Preheat oven to 325°F (163°C). Heat cream until just simmering. Whisk egg yolks and sugar until pale. Slowly pour warm cream into yolks while whisking to temper. Add vanilla. Strain through a fine sieve. Pour into 4 ramekins. Place in a water bath and bake 35–40 minutes until just set with a slight wobble. Refrigerate at least 2 hours. Just before serving sprinkle 1 tsp sugar over each and caramelize with a kitchen torch or under the broiler."
+      },
+      {
+        "name": "Custard Pudding",
+        "servings": "4 servings",
+        "ingredients": [
+          "2 cups (480 ml) whole milk",
+          "3 large eggs",
+          "⅓ cup (65 g) granulated sugar",
+          "1 tsp vanilla extract",
+          "Pinch of salt",
+          "Optional caramel sauce for base"
+        ],
+        "prep": "Preheat oven to 325°F (163°C). Warm milk to just below boiling. Whisk eggs, sugar, vanilla, and salt. Slowly pour warm milk into eggs while whisking to temper. Strain through a fine sieve. Pour into ramekins. Bake in a water bath 30–35 minutes until just set with a slight wobble. Cool and refrigerate before serving."
+      },
+      {
+        "name": "Flan",
+        "servings": "6 servings",
+        "ingredients": [
+          "Caramel: ¾ cup (150 g) granulated sugar, ¼ cup (60 ml) water",
+          "Custard: 1 can (14 oz) sweetened condensed milk, 1 can (12 oz) evaporated milk, 3 large eggs, 1 tsp vanilla extract"
+        ],
+        "prep": "Preheat oven to 350°F (175°C). Make caramel by cooking sugar and water without stirring until deep amber. Pour into a round baking dish and swirl to coat the bottom. Make custard by blending condensed milk, evaporated milk, eggs, and vanilla until smooth. Pour over caramel. Place in a water bath and bake 50–60 minutes until just set. Cool completely then refrigerate at least 4 hours. To serve loosen edges with a knife and invert onto a serving plate."
+      },
+      {
+        "name": "Panna Cotta",
+        "servings": "4 servings",
+        "ingredients": [
+          "2 cups (480 ml) heavy cream",
+          "¼ cup (50 g) granulated sugar",
+          "1 tsp vanilla extract",
+          "1½ tsp unflavored powdered gelatin",
+          "2 tbsp cold water",
+          "Fresh berries or fruit coulis for serving"
+        ],
+        "prep": "Bloom gelatin in cold water 5 minutes. Warm cream and sugar in a saucepan over medium heat, stirring until sugar dissolves and cream is steaming. Remove from heat and stir in bloomed gelatin until fully dissolved. Add vanilla. Pour into 4 lightly greased ramekins or glasses. Refrigerate at least 4 hours or overnight until fully set. To unmold dip briefly in warm water and invert onto a plate. Serve with berries."
+      },
+      {
+        "name": "Rice Pudding",
+        "servings": "4 servings",
+        "ingredients": [
+          "1 cup (185 g) short-grain white rice",
+          "4 cups (960 ml) whole milk",
+          "⅓ cup (65 g) granulated sugar",
+          "1 tsp vanilla extract",
+          "¼ tsp cinnamon",
+          "Pinch of salt",
+          "Zest of ½ lemon (optional)"
+        ],
+        "prep": "Combine rice, milk, sugar, salt, and lemon zest in a heavy saucepan over medium heat. Bring to a gentle boil, stirring frequently. Reduce heat to low and cook, stirring often to prevent sticking, until rice is tender and mixture is creamy and thickened — about 25–30 minutes. Remove from heat and stir in vanilla and cinnamon. Serve warm or pour into dishes and refrigerate. Sprinkle with additional cinnamon before serving."
+      },
+      {
+        "name": "Tiramisu",
+        "servings": "8 servings",
+        "ingredients": [
+          "6 large egg yolks",
+          "¾ cup (150 g) granulated sugar",
+          "1 lb (450 g) mascarpone cheese, room temperature",
+          "1½ cups (360 ml) heavy cream",
+          "1½ cups (360 ml) strong brewed espresso or coffee, cooled",
+          "3 tbsp rum or coffee liqueur (optional)",
+          "24–36 ladyfinger biscuits",
+          "Cocoa powder for dusting"
+        ],
+        "prep": "Beat egg yolks and sugar in a double boiler over simmering water until pale and thick, about 5 minutes. Remove from heat and beat until cooled. Fold in mascarpone until smooth. Whip heavy cream to stiff peaks and fold into mascarpone mixture. Mix coffee and rum together. Quickly dip each ladyfinger in coffee mixture and arrange in a single layer in a 9x13 dish. Spread half the mascarpone cream over. Repeat layers. Dust generously with cocoa powder. Refrigerate at least 4 hours or overnight."
+      },
+      {
+        "name": "Vanilla Pastry Cream",
+        "servings": "1 batch",
+        "ingredients": [
+          "2 cups (480 ml) whole milk",
+          "½ cup (100 g) granulated sugar",
+          "3 tbsp cornstarch",
+          "4 large egg yolks",
+          "1 tsp pure vanilla extract",
+          "2 tbsp unsalted butter"
+        ],
+        "prep": "Heat milk to just below boiling. Whisk yolks, sugar, and cornstarch until pale. Slowly pour hot milk into yolk mixture while whisking to temper. Return to saucepan and cook over medium heat whisking vigorously until thick and bubbling. One more minute. Remove from heat, add butter and vanilla. Press plastic wrap directly on surface and refrigerate."
+      },
+      {
+        "name": "Vanilla Pudding",
+        "servings": "4 servings",
+        "ingredients": [
+          "½ cup (100 g) granulated sugar",
+          "3 tbsp cornstarch",
+          "¼ tsp salt",
+          "2½ cups (600 ml) whole milk",
+          "2 large egg yolks, beaten",
+          "1 tbsp unsalted butter",
+          "2 tsp vanilla extract"
+        ],
+        "prep": "Whisk sugar, cornstarch, and salt with cold milk in a saucepan until smooth. Cook over medium heat stirring constantly until bubbly. Temper a little of the hot mixture into beaten egg yolks. Pour tempered yolks back into pot and cook 2 more minutes until creamy. Add butter and vanilla. Pour into dishes and press plastic wrap on surface. Chill until set."}
+    ]
+  }
+ 
+];
+
+
+// ================================================================
+//  TOGGLE CATEGORY — shows/hides recipe list under a card
+// ================================================================
+function toggleCategory(catId) {
+  var ul = document.getElementById(catId);
+  if (!ul) return;
+
+  if (ul.style.display === 'block') {
+    ul.style.display = 'none';
+    return;
+  }
+
+  var cat = desserts_data.find(function(c) { return c.id === catId; });
+  if (!cat) return;
+
+  if (ul.innerHTML === '') {
+    cat.recipes.forEach(function(recipe, idx) {
+      var li = document.createElement('li');
+      li.className = 'browser-item';
+      li.innerHTML =
+        '<span class="browser-item-name">' + recipe.name + '</span>' +
+        '<span class="browser-item-arrow">›</span>';
+      li.addEventListener('click', function() {
+        open_recipe_modal(recipe, catId);
+      });
+      ul.appendChild(li);
+    });
+  }
+
+  ul.style.display = 'block';
+}
+
