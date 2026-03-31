@@ -1,6 +1,5 @@
 // ================================================================
 //  cookbook_auth.js — Cookbook Paywall & Auth System
-//  Add this script to cookbook_menu.html and index.html
 // ================================================================
 
 import { auth, db, onAuthStateChanged } from './firebase_config.js';
@@ -9,7 +8,8 @@ import {
   createUserWithEmailAndPassword,
   signOut,
   GoogleAuthProvider,
-  signInWithPopup
+  signInWithRedirect,
+  getRedirectResult
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 import {
   doc, getDoc, setDoc
@@ -23,6 +23,23 @@ let current_user      = null;
 let cookbook_unlocked = false;
 let preview_used      = false;
 
+// ── Handle Google redirect result FIRST on page load ──────────
+getRedirectResult(auth).then(async (result) => {
+  if (result && result.user) {
+    const user = result.user;
+    const snap = await getDoc(doc(db, 'users', user.uid));
+    if (!snap.exists()) {
+      await setDoc(doc(db, 'users', user.uid), {
+        email:   user.email,
+        paid:    false,
+        created: new Date().toISOString()
+      });
+    }
+  }
+}).catch((e) => {
+  console.error('Redirect result error:', e.code, e.message);
+});
+
 // ── On page load — check auth state ───────────────────────────
 onAuthStateChanged(auth, async (user) => {
   const navEmail   = document.getElementById('nav-user-email');
@@ -34,17 +51,20 @@ onAuthStateChanged(auth, async (user) => {
     current_user = user;
     await check_paid_status(user.uid);
 
-    if (navEmail)  navEmail.textContent       = `Welcome, ${user.email}`;
-    if (signInBtn) signInBtn.style.display    = 'none';
-    if (createBtn) createBtn.style.display    = 'none';
+    if (navEmail)   navEmail.textContent      = `Welcome, ${user.email}`;
+    if (signInBtn)  signInBtn.style.display   = 'none';
+    if (createBtn)  createBtn.style.display   = 'none';
     if (signOutBtn) signOutBtn.style.display  = 'inline-block';
+
+    // Close auth wall if open
+    hide_auth_wall();
   } else {
     current_user      = null;
     cookbook_unlocked = false;
 
-    if (navEmail)  navEmail.textContent       = 'Welcome, Guest';
-    if (signInBtn) signInBtn.style.display    = 'inline-block';
-    if (createBtn) createBtn.style.display    = 'inline-block';
+    if (navEmail)   navEmail.textContent      = 'Welcome, Guest';
+    if (signInBtn)  signInBtn.style.display   = 'inline-block';
+    if (createBtn)  createBtn.style.display   = 'inline-block';
     if (signOutBtn) signOutBtn.style.display  = 'none';
   }
 });
@@ -76,7 +96,7 @@ function show_auth_wall() {
         <p style="font-family:'Space Mono',monospace;font-size:10px;color:rgba(200,169,110,0.6);letter-spacing:2px;text-align:center;margin:0 0 20px 0;">SIGN IN TO CONTINUE</p>
 
         <button onclick="handle_google_sign_in()"
-          style="width:100%;padding:13px;background:transparent;border:1px solid rgba(200,169,110,0.3);border-radius:8px;color:#e8dcc8;font-family:'Space Mono',monospace;font-size:11px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:16px;">
+          style="width:100%;padding:13px;background:transparent;border:1px solid rgba(200,169,110,0.3);border-radius:8px;color:#e8dcc8;font-family:'Space Mono',monospace;font-size:11px;cursor:pointer;margin-bottom:16px;box-sizing:border-box;">
           🔵 Sign In with Google
         </button>
 
@@ -95,12 +115,12 @@ function show_auth_wall() {
           style="width:100%;padding:12px;background:rgba(255,255,255,0.05);border:1px solid rgba(200,169,110,0.2);border-radius:8px;color:#e8dcc8;font-family:'Space Mono',monospace;font-size:11px;box-sizing:border-box;margin-bottom:18px;outline:none;" />
 
         <button onclick="handle_sign_in()"
-          style="width:100%;padding:13px;background:rgba(200,169,110,0.15);border:1px solid rgba(200,169,110,0.4);border-radius:8px;color:#c8a96e;font-family:'Space Mono',monospace;font-size:11px;cursor:pointer;margin-bottom:10px;">
+          style="width:100%;padding:13px;background:rgba(200,169,110,0.15);border:1px solid rgba(200,169,110,0.4);border-radius:8px;color:#c8a96e;font-family:'Space Mono',monospace;font-size:11px;cursor:pointer;margin-bottom:10px;box-sizing:border-box;">
           Sign In
         </button>
 
         <button onclick="handle_sign_up()"
-          style="width:100%;padding:13px;background:transparent;border:1px solid rgba(200,169,110,0.2);border-radius:8px;color:rgba(200,169,110,0.5);font-family:'Space Mono',monospace;font-size:11px;cursor:pointer;">
+          style="width:100%;padding:13px;background:transparent;border:1px solid rgba(200,169,110,0.2);border-radius:8px;color:rgba(200,169,110,0.5);font-family:'Space Mono',monospace;font-size:11px;cursor:pointer;box-sizing:border-box;">
           Create Account
         </button>
 
@@ -119,19 +139,10 @@ function hide_auth_wall() {
   if (wall) wall.style.display = 'none';
 }
 
-// ── Google sign in ─────────────────────────────────────────────
+// ── Google sign in — uses redirect for mobile compatibility ────
 window.handle_google_sign_in = async function() {
   try {
-    const result = await signInWithPopup(auth, google_provider);
-    const user   = result.user;
-    const snap   = await getDoc(doc(db, 'users', user.uid));
-    if (!snap.exists()) {
-      await setDoc(doc(db, 'users', user.uid), {
-        email:   user.email,
-        paid:    false,
-        created: new Date().toISOString()
-      });
-    }
+    await signInWithRedirect(auth, google_provider);
   } catch (e) {
     const err_el = document.getElementById('auth_error');
     if (err_el) {
