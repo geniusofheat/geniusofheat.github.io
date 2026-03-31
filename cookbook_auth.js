@@ -16,6 +16,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 // ── State ──────────────────────────────────────────────────────
+const google_provider = new GoogleAuthProvider();
 let current_user     = null;
 let cookbook_unlocked = false;
 let preview_used     = false;
