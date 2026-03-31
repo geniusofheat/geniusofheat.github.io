@@ -97,7 +97,7 @@ function show_recipes(cat_id, sub_idx) {
     li.className = 'nested-li';
     li.innerHTML = '<span class="recipe-label">' + recipe.name + '</span><span class="recipe-arrow">›</span>';
     li.style.cursor = 'pointer';
-    li.addEventListener('click', function() { open_recipe_modal(recipe, subcat.icon, subcat.name); });
+    li.addEventListener('click', function() { check_and_open_recipe(recipe, subcat.icon, subcat.name); });
     list_el.appendChild(li);
   });
 }

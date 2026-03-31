@@ -18,19 +18,34 @@ let current_user     = null;
 let cookbook_unlocked = false;
 let preview_used     = false;
 
+// ── Jetson changed this section to operate nav buttons ───────────────────────────
 // ── On page load — check auth state ───────────────────────────
 onAuthStateChanged(auth, async (user) => {
+  const navEmail   = document.getElementById('nav-user-email');
+  const signInBtn  = document.getElementById('sign-in-btn');
+  const createBtn  = document.getElementById('create-account-btn');
+  const signOutBtn = document.getElementById('sign-out-btn');
+
   if (user) {
     current_user = user;
     await check_paid_status(user.uid);
-    hide_auth_wall();
+
+    // Update nav for signed-in state
+    if (navEmail) navEmail.textContent = `Welcome, ${user.email}`;
+    if (signInBtn) signInBtn.style.display = 'none';
+    if (createBtn) createBtn.style.display = 'none';
+    if (signOutBtn) signOutBtn.style.display = 'inline-block';
   } else {
-    current_user     = null;
+    current_user = null;
     cookbook_unlocked = false;
-    show_auth_wall();
+
+    // Update nav for signed-out state
+    if (navEmail) navEmail.textContent = '';
+    if (signInBtn) signInBtn.style.display = 'inline-block';
+    if (createBtn) createBtn.style.display = 'inline-block';
+    if (signOutBtn) signOutBtn.style.display = 'none';
   }
 });
-
 // ── Check Firestore for paid status ───────────────────────────
 async function check_paid_status(uid) {
   try {
@@ -160,7 +175,7 @@ function show_preview_banner() {
   body.appendChild(banner);
 }
 
-// ── Paywall modal ──────────────────────────────────────────────
+// ── Paywall modal ────────────────────
 window.show_paywall_modal = function() {
   let modal = document.getElementById('paywall_modal');
   if (!modal) {
@@ -189,3 +204,22 @@ window.close_paywall_modal = function() {
   const modal = document.getElementById('paywall_modal');
   if (modal) modal.style.display = 'none';
 };
+
+// ──  This part added by jetson
+// ── Sign Out & Nav Buttons ───────
+document.getElementById('sign-out-btn').addEventListener('click', async () => {
+  try {
+    await signOut(auth);
+  } catch (e) {
+    console.error("Sign out failed:", e);
+  }
+});
+
+// Hook nav buttons to existing auth wall
+document.getElementById('sign-in-btn').addEventListener('click', () => {
+  show_auth_wall();
+});
+document.getElementById('create-account-btn').addEventListener('click', () => {
+  show_auth_wall();
+});
+// ── End Sign Out & Nav Buttons
