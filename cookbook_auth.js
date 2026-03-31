@@ -234,9 +234,6 @@ document.getElementById('create-account-btn').addEventListener('click', () => {
   show_auth_wall();
 });
 // ── End Sign Out & Nav Buttons
-import { GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-
-const google_provider = new GoogleAuthProvider();
 
 window.handle_google_sign_in = async function() {
   try {
