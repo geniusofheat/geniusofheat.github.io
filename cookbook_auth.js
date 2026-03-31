@@ -42,7 +42,7 @@ onAuthStateChanged(auth, async (user) => {
     cookbook_unlocked = false;
 
     // Update nav for signed-out state
-    if (navEmail) navEmail.textContent = '';
+    if (navEmail) navEmail.textContent = 'Welcome, Guest';
     if (signInBtn) signInBtn.style.display = 'inline-block';
     if (createBtn) createBtn.style.display = 'inline-block';
     if (signOutBtn) signOutBtn.style.display = 'none';
