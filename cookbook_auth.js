@@ -81,8 +81,7 @@ getRedirectResult(auth)
       await check_paid_status(user.uid);
       updateNavBar(user);
       showPostLoginOptions(user);
-      // Redirect to index after successful Google sign in
-      window.location.href = 'index.html';
+     
     }
   })
   .catch((e) => {
