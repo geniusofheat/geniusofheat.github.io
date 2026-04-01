@@ -9,7 +9,8 @@ import {
   signOut,
   GoogleAuthProvider,
   signInWithRedirect,
-  getRedirectResult
+  getRedirectResult,
+  sendPasswordResetEmail
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 import {
   doc, getDoc, setDoc
@@ -29,14 +30,12 @@ function update_nav(user) {
   const signInBtn  = document.getElementById('sign-in-btn');
   const createBtn  = document.getElementById('create-account-btn');
   const signOutBtn = document.getElementById('sign-out-btn');
-  const panel      = document.getElementById('sign_in_panel');
 
   if (user) {
     if (navEmail)   navEmail.textContent      = `Welcome, ${user.displayName || user.email}`;
     if (signInBtn)  signInBtn.style.display   = 'none';
     if (createBtn)  createBtn.style.display   = 'none';
     if (signOutBtn) signOutBtn.style.display  = 'inline-block';
-    if (panel)      panel.style.display       = 'none';
   } else {
     if (navEmail)   navEmail.textContent      = 'Welcome, Guest';
     if (signInBtn)  signInBtn.style.display   = 'inline-block';
@@ -63,7 +62,6 @@ async function check_paid_status(uid) {
 getRedirectResult(auth).then(async (result) => {
   if (result && result.user) {
     const user = result.user;
-    // Create Firestore doc if first time
     const snap = await getDoc(doc(db, 'users', user.uid));
     if (!snap.exists()) {
       await setDoc(doc(db, 'users', user.uid), {
@@ -72,14 +70,11 @@ getRedirectResult(auth).then(async (result) => {
         created: new Date().toISOString()
       });
     }
-    // Update nav immediately after redirect
     await check_paid_status(user.uid);
     current_user = user;
     update_nav(user);
   }
-}).catch((e) => {
-  console.error('Redirect error:', e.code, e.message);
-});
+}).catch((e) => console.error('Redirect error:', e.code, e.message));
 
 // ── Auth state listener ────────────────────────────────────────
 onAuthStateChanged(auth, async (user) => {
@@ -94,79 +89,6 @@ onAuthStateChanged(auth, async (user) => {
   }
 });
 
-// ── Toggle sign in panel ───────────────────────────────────────
-window.toggle_sign_in_panel = function() {
-  const panel = document.getElementById('sign_in_panel');
-  if (!panel) return;
-  panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
-};
-
-// ── Wire up buttons after DOM loads ───────────────────────────
-document.addEventListener('DOMContentLoaded', function() {
-
-  // Google sign in
-  const googleBtn = document.getElementById('google-sign-in-btn');
-  if (googleBtn) {
-    googleBtn.addEventListener('click', async () => {
-      try {
-        await signInWithRedirect(auth, google_provider);
-      } catch (e) {
-        show_auth_error(e.message);
-      }
-    });
-  }
-
-  // Email sign in
-  const emailSignInBtn = document.getElementById('email-sign-in-btn');
-  if (emailSignInBtn) {
-    emailSignInBtn.addEventListener('click', async () => {
-      const email    = document.getElementById('auth_email').value.trim();
-      const password = document.getElementById('auth_password').value;
-      try {
-        await signInWithEmailAndPassword(auth, email, password);
-      } catch (e) {
-        show_auth_error('Incorrect email or password.');
-      }
-    });
-  }
-
-  // Create account
-  const emailCreateBtn = document.getElementById('email-create-btn');
-  if (emailCreateBtn) {
-    emailCreateBtn.addEventListener('click', async () => {
-      const email    = document.getElementById('auth_email').value.trim();
-      const password = document.getElementById('auth_password').value;
-      if (password.length < 6) {
-        show_auth_error('Password must be at least 6 characters.');
-        return;
-      }
-      try {
-        const cred = await createUserWithEmailAndPassword(auth, email, password);
-        await setDoc(doc(db, 'users', cred.user.uid), {
-          email:   email,
-          paid:    false,
-          created: new Date().toISOString()
-        });
-      } catch (e) {
-        show_auth_error(e.message || 'Could not create account.');
-      }
-    });
-  }
-
-  // Sign out
-  const signOutBtn = document.getElementById('sign-out-btn');
-  if (signOutBtn) {
-    signOutBtn.addEventListener('click', async () => {
-      try {
-        await signOut(auth);
-      } catch (e) {
-        console.error('Sign out failed:', e);
-      }
-    });
-  }
-
-});
-
 // ── Auth error helper ──────────────────────────────────────────
 function show_auth_error(msg) {
   const err_el = document.getElementById('auth_error');
@@ -176,18 +98,73 @@ function show_auth_error(msg) {
   }
 }
 
+// ── Wire up buttons after DOM loads ───────────────────────────
+document.addEventListener('DOMContentLoaded', function() {
+
+  // Google sign in
+  const googleBtn = document.getElementById('login-google-btn') || document.getElementById('google-sign-in-btn');
+  if (googleBtn) {
+    googleBtn.addEventListener('click', async () => {
+      try { await signInWithRedirect(auth, google_provider); }
+      catch (e) { show_auth_error(e.message); }
+    });
+  }
+
+  // Email sign in
+  const emailSignInBtn = document.getElementById('login-email-btn') || document.getElementById('email-sign-in-btn');
+  if (emailSignInBtn) {
+    emailSignInBtn.addEventListener('click', async () => {
+      const email    = document.getElementById('login_email')?.value.trim() || document.getElementById('auth_email')?.value.trim();
+      const password = document.getElementById('login_password')?.value || document.getElementById('auth_password')?.value;
+      try { await signInWithEmailAndPassword(auth, email, password); }
+      catch (e) { show_auth_error('Incorrect email or password.'); }
+    });
+  }
+
+  // Create account
+  const emailCreateBtn = document.getElementById('login-create-btn') || document.getElementById('email-create-btn');
+  if (emailCreateBtn) {
+    emailCreateBtn.addEventListener('click', async () => {
+      const email    = document.getElementById('login_email')?.value.trim() || document.getElementById('auth_email')?.value.trim();
+      const password = document.getElementById('login_password')?.value || document.getElementById('auth_password')?.value;
+      if (password.length < 6) { show_auth_error('Password must be at least 6 characters.'); return; }
+      try {
+        const cred = await createUserWithEmailAndPassword(auth, email, password);
+        await setDoc(doc(db, 'users', cred.user.uid), { email, paid:false, created: new Date().toISOString() });
+      } catch (e) { show_auth_error(e.message || 'Could not create account.'); }
+    });
+  }
+
+  // Forgot password
+  const forgotBtn = document.getElementById('login-forgot-btn');
+  if (forgotBtn) {
+    forgotBtn.addEventListener('click', async () => {
+      const email = document.getElementById('login_email')?.value.trim();
+      if (!email) { show_auth_error('Please enter your email first.'); return; }
+      try {
+        await sendPasswordResetEmail(auth, email);
+        show_auth_error('Password recovery email sent. Check your inbox.');
+      } catch (e) {
+        show_auth_error(e.message || 'Could not send password recovery email.');
+      }
+    });
+  }
+
+  // Sign out
+  const signOutBtn = document.getElementById('sign-out-btn');
+  if (signOutBtn) {
+    signOutBtn.addEventListener('click', async () => {
+      try { await signOut(auth); }
+      catch (e) { console.error('Sign out failed:', e); }
+    });
+  }
+
+});
+
 // ── Recipe paywall check ───────────────────────────────────────
 window.check_and_open_recipe = function(recipe, icon, cat_name) {
-  if (cookbook_unlocked) {
-    open_recipe_modal(recipe, icon, cat_name);
-    return;
-  }
-  if (!preview_used) {
-    preview_used = true;
-    open_recipe_modal(recipe, icon, cat_name);
-    setTimeout(show_preview_banner, 600);
-    return;
-  }
+  if (cookbook_unlocked) { open_recipe_modal(recipe, icon, cat_name); return; }
+  if (!preview_used) { preview_used = true; open_recipe_modal(recipe, icon, cat_name); setTimeout(show_preview_banner, 600); return; }
   show_paywall_modal();
 };
 
@@ -198,7 +175,7 @@ function show_preview_banner() {
   const banner = document.createElement('div');
   banner.style.cssText = 'margin-top:20px;padding:14px;background:rgba(200,169,110,0.08);border:1px solid rgba(200,169,110,0.25);border-radius:10px;text-align:center;';
   banner.innerHTML = `
-    <p style="font-family:'Space Mono',monospace;font-size:10px;color:#c8a96e;letter-spacing:1.5px;margin:0 0 10px 0;">THIS WAS YOUR FREE PREVIEW</p>
+    <p style="font-family:'Space Mono',monospace;font-size:10px;color:#c8a96e;margin:0 0 10px 0;">THIS WAS YOUR FREE PREVIEW</p>
     <p style="font-family:'Crimson Pro',serif;font-size:14px;color:#e8dcc8;margin:0 0 12px 0;">Unlock the full cookbook to access all recipes.</p>
     <button onclick="close_recipe_modal();show_paywall_modal();"
       style="padding:10px 20px;background:rgba(200,169,110,0.2);border:1px solid rgba(200,169,110,0.4);border-radius:8px;color:#c8a96e;font-family:'Space Mono',monospace;font-size:10px;cursor:pointer;">
