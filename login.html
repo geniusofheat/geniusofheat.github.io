@@ -3,89 +3,58 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Meal Planner — Login</title>
+<title>Meal Planner — Sign In / Create Account</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;900&family=Crimson+Pro:ital,wght@0,400;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="blue_card_style.css">
 </head>
 
-<body>
-<div id="app" style="display:flex;justify-content:center;align-items:center;height:100vh;">
+<body style="background:#1a2a4a;color:#e8dcc8;font-family:'Crimson Pro',serif;display:flex;justify-content:center;align-items:center;min-height:100vh;">
 
-  <div class="nav-pill-wrap" style="width:100%;max-width:400px;">
-    <div class="nav-pill-outer">
-      <div class="card" style="padding:24px;">
+<div style="width:100%;max-width:400px;margin:20px;">
 
-        <!-- Header -->
-        <div class="card-header" style="text-align:center;">
-          <h2 style="font-family:'Playfair Display',serif;color:#c8a96e;margin-bottom:8px;">Sign In or Create Account</h2>
-          <hr>
-        </div>
+  <h1 style="text-align:center;font-family:'Playfair Display',serif;color:#c8a96e;margin-bottom:16px;">Sign In or Create an Account</h1>
 
-        <!-- Card Body -->
-        <div class="card-body" style="display:flex;flex-direction:column;gap:12px;">
+  <!-- ── AUTH CARD ── -->
+  <div style="background:#11203b;border:2px solid gold;border-radius:14px;padding:24px;box-sizing:border-box;">
 
-          <!-- Auth Error -->
-          <div id="auth_error" style="display:none;color:#e8dcc8;font-family:'Space Mono',monospace;font-size:12px;text-align:center;background:rgba(200,169,110,0.1);padding:8px;border:1px solid rgba(200,169,110,0.3);border-radius:6px;"></div>
+    <!-- Google Sign-In -->
+    <div style="text-align:center;margin-bottom:16px;">
+      <button id="google-sign-in-btn" class="btn-blue" style="width:100%;padding:12px;font-size:14px;cursor:pointer;">
+        Sign in with Google
+      </button>
+    </div>
 
-          <!-- Google Sign-In -->
-          <button id="login-google-btn" style="padding:10px;background:#1a2a4a;border:1px solid gold;border-radius:8px;color:gold;font-family:'Space Mono',monospace;cursor:pointer;">
-            Sign in with Google
-          </button>
+    <hr style="border:1px solid rgba(200,169,110,0.3);margin:16px 0;">
 
-          <hr style="border-color:rgba(200,169,110,0.3);">
+    <!-- Email/Password Login -->
+    <div style="margin-bottom:12px;">
+      <label for="auth_email" style="display:block;margin-bottom:4px;">Email</label>
+      <input id="auth_email" type="email" placeholder="you@example.com" style="width:100%;padding:8px;border-radius:6px;border:1px solid rgba(200,169,110,0.3);background:#1a2a4a;color:#e8dcc8;">
+    </div>
+    <div style="margin-bottom:12px;">
+      <label for="auth_password" style="display:block;margin-bottom:4px;">Password</label>
+      <input id="auth_password" type="password" placeholder="Enter password" style="width:100%;padding:8px;border-radius:6px;border:1px solid rgba(200,169,110,0.3);background:#1a2a4a;color:#e8dcc8;">
+    </div>
 
-          <!-- Email/Password Sign-In -->
-          <input id="login_email" type="email" placeholder="Email" style="padding:10px;border:1px solid rgba(200,169,110,0.3);border-radius:6px;font-family:'Space Mono',monospace;">
-          <input id="login_password" type="password" placeholder="Password" style="padding:10px;border:1px solid rgba(200,169,110,0.3);border-radius:6px;font-family:'Space Mono',monospace;">
-          
-          <button id="login-email-btn" style="padding:10px;background:rgba(200,169,110,0.2);border:1px solid rgba(200,169,110,0.4);border-radius:8px;color:#c8a96e;font-family:'Space Mono',monospace;cursor:pointer;">
-            Sign in with Email
-          </button>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+      <button id="email-sign-in-btn" class="btn-blue" style="padding:10px 16px;cursor:pointer;">Sign In</button>
+      <button id="email-create-btn" class="btn-blue" style="padding:10px 16px;cursor:pointer;background:transparent;border:1px solid rgba(200,169,110,0.4);color:#c8a96e;">
+        Create Account
+      </button>
+    </div>
 
-          <button id="login-forgot-btn" style="padding:8px;background:transparent;border:none;color:rgba(200,169,110,0.7);font-family:'Space Mono',monospace;cursor:pointer;text-decoration:underline;">
-            Forgot Password?
-          </button>
+    <div style="text-align:right;margin-bottom:12px;">
+      <button id="forgot-password-btn" style="background:none;border:none;color:#c8a96e;font-size:12px;cursor:pointer;">
+        Forgot Password?
+      </button>
+    </div>
 
-          <button id="login-create-btn" style="padding:10px;background:rgba(200,169,110,0.15);border:1px solid rgba(200,169,110,0.4);border-radius:8px;color:#c8a96e;font-family:'Space Mono',monospace;cursor:pointer;">
-            Create Account
-          </button>
+    <div id="auth_error" style="display:none;color:#f0a76b;font-size:12px;margin-top:8px;text-align:center;"></div>
 
-        </div><!-- card-body -->
-      </div><!-- card -->
-    </div><!-- nav-pill-outer -->
-  </div><!-- nav-pill-wrap -->
+  </div> <!-- close auth card -->
 
-</div><!-- app -->
-
-<script type="module">
-import { auth } from './firebase_config.js';
-import { sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-
-// Wire up the password recovery
-document.addEventListener('DOMContentLoaded', () => {
-  const forgotBtn = document.getElementById('login-forgot-btn');
-  const emailInput = document.getElementById('login_email');
-  const errorDiv = document.getElementById('auth_error');
-
-  forgotBtn.addEventListener('click', async () => {
-    const email = emailInput.value.trim();
-    if (!email) {
-      errorDiv.textContent = "Please enter your email first.";
-      errorDiv.style.display = "block";
-      return;
-    }
-    try {
-      await sendPasswordResetEmail(auth, email);
-      errorDiv.textContent = "Password recovery email sent. Check your inbox.";
-      errorDiv.style.display = "block";
-    } catch (e) {
-      errorDiv.textContent = e.message || "Could not send password recovery email.";
-      errorDiv.style.display = "block";
-    }
-  });
-});
-</script>
+</div>
 
 <script type="module" src="cookbook_auth.js"></script>
 </body>
